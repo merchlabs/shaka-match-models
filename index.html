@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shaka Match model library</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>
+  :root {
+    --bg: #14202b; --panel: #1d2c3a; --panel2: #24374a; --line: #31485d;
+    --ink: #eef4f8; --muted: #9db0c1; --sun: #ffcc4d; --coral: #ff6b6b; --leaf: #3da35d;
+    --aqua: #4ecdc4; --ocean: #1a9bd7; --pink: #ff8fab;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  a { color: var(--aqua); }
+  header { position: sticky; top: 0; z-index: 5; background: rgba(20,32,43,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); padding: 14px 20px; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  h1 { font-size: 20px; margin: 0; letter-spacing: .2px; }
+  h1 span { color: var(--sun); }
+  .meta { color: var(--muted); font-size: 13px; }
+  input[type=search] { flex: 1 1 220px; min-width: 160px; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; font-size: 15px; }
+  .chip { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px; user-select: none; }
+  .chip.on { background: var(--sun); color: #3b2a1a; border-color: var(--sun); font-weight: 600; }
+  .chip.pick.on { background: var(--pink); border-color: var(--pink); }
+  select { background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: 14px; }
+  main { padding: 18px 20px 60px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; position: relative; }
+  .card.picked { border-color: var(--pink); box-shadow: 0 0 0 2px rgba(255,143,171,.35); }
+  .card { cursor: pointer; }
+  .card:hover { border-color: var(--sun); }
+  .card.fresh { border-color: var(--sun); box-shadow: 0 0 0 3px rgba(255,204,77,.5); }
+  #swap select { width: 100%; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line); background: #1b2a38; color: var(--ink); font: inherit; }
+  .card model-viewer { width: 100%; aspect-ratio: 1; background: radial-gradient(circle at 50% 40%, #35506a, #24374a 70%); --poster-color: transparent; pointer-events: none; }
+  .card .body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; }
+  .name { font-weight: 700; font-size: 16px; cursor: pointer; }
+  .name:hover { color: var(--sun); }
+  .slug { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--muted); }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--panel2); color: var(--muted); border: 1px solid var(--line); }
+  .tag.lvl { background: rgba(61,163,93,.2); color: #8fe0a6; border-color: rgba(61,163,93,.5); }
+  .tag.t-test { color: #ffb3b3; border-color: rgba(255,107,107,.5); }
+  .tag.t-gen { color: #9fe3dc; border-color: rgba(78,205,196,.5); }
+  .pickbtn { position: absolute; top: 8px; right: 8px; z-index: 2; background: rgba(20,32,43,.75); border: 1px solid var(--line); color: var(--ink); border-radius: 999px; width: 34px; height: 34px; cursor: pointer; font-size: 17px; line-height: 30px; text-align: center; }
+  .pickbtn.on { background: var(--pink); border-color: var(--pink); color: #3b1a26; }
+  .empty { color: var(--muted); padding: 40px; text-align: center; }
+  /* detail */
+  dialog { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; }
+  dialog::backdrop { background: rgba(0,0,0,.65); }
+  .sheet { background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 20px; width: min(1100px, 96vw); max-height: 94vh; overflow: auto; display: grid; grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr); }
+  .sheet model-viewer { width: 100%; height: min(70vh, 640px); background: radial-gradient(circle at 50% 40%, #35506a, #24374a 70%); }
+  .info { padding: 22px 22px 26px; display: flex; flex-direction: column; gap: 12px; }
+  .info h2 { margin: 0; font-size: 26px; }
+  .info h2[contenteditable] { cursor: text; border-bottom: 1px dashed var(--line); padding-bottom: 2px; }
+  .info h2[contenteditable]:focus { outline: none; border-bottom-color: var(--sun); }
+  .hawaiian { display: flex; flex-direction: column; gap: 6px; margin: 4px 0 12px; }
+  .hawaiian[hidden] { display: none; }
+  .hawaiian input { font: inherit; font-size: 15px; padding: 6px 9px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: inherit; }
+  .hawaiian input:focus { outline: none; border-color: var(--sun); }
+  .hawaiian .word { font-size: 20px; }
+  .hawaiian .say { font-size: 13px; color: var(--muted); }
+  .kv { display: grid; grid-template-columns: 110px 1fr; gap: 6px 10px; font-size: 14px; }
+  .kv dt { color: var(--muted); } .kv dd { margin: 0; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+  .btn { border: 0; border-radius: 12px; padding: 10px 14px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: 14px; }
+  .btn.leaf { background: var(--leaf); color: #fff; } .btn.ocean { background: var(--ocean); color: #fff; }
+  .btn.ghost { background: var(--panel2); color: var(--ink); border: 1px solid var(--line); }
+  .btn.danger { background: transparent; color: var(--coral); border: 1px solid var(--coral); margin-left: auto; }
+  .btn:disabled { opacity: .45; cursor: default; }
+  .sheet.small { grid-template-columns: 1fr; width: min(520px, 92vw); }
+  .staged { color: var(--sun); }
+  .close { position: absolute; top: 12px; right: 12px; background: var(--coral); color: #fff; border: 0; border-radius: 999px; width: 40px; height: 40px; font-size: 20px; cursor: pointer; }
+  .viewerwrap { position: relative; }
+  .hint { position: absolute; left: 12px; bottom: 10px; font-size: 12px; color: var(--muted); background: rgba(20,32,43,.6); padding: 4px 8px; border-radius: 8px; }
+  .sheet model-viewer.posing { cursor: grab; touch-action: none; }
+  model-viewer:focus, model-viewer:focus-visible { outline: none; }
+  .sheet.drop { outline: 4px dashed var(--sun); outline-offset: -4px; }
+  .pose { border-top: 1px solid var(--line); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .pose[hidden] { display: none; }
+  .pose .row { gap: 8px; }
+  .pose .now { font-family: ui-monospace, Menlo, monospace; font-size: 13px; color: var(--muted); }
+  .axes { display: grid; grid-template-columns: auto 1fr auto auto; gap: 6px 8px; align-items: center; }
+  .axes label { font-family: ui-monospace, Menlo, monospace; font-size: 13px; color: var(--muted); }
+  .axes input[type=range] { width: 100%; accent-color: var(--sun); }
+  .axes input[type=number] { width: 64px; background: var(--panel2); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 5px 6px; font-size: 13px; font-family: ui-monospace, Menlo, monospace; }
+  .axes .nudge { display: flex; gap: 3px; }
+  .axes .nudge button { border: 1px solid var(--line); background: var(--panel2); color: var(--ink); border-radius: 7px; padding: 3px 6px; font-size: 12px; cursor: pointer; }
+  .btn.sun { background: var(--sun); color: #3b2a1a; }
+  .btn.on { outline: 2px solid var(--ink); }
+  .btn.mini { padding: 7px 11px; font-size: 13px; }
+  #dropzone { position: fixed; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; background: rgba(20,32,43,.85); border: 4px dashed var(--sun); font-size: 26px; font-weight: 700; pointer-events: none; }
+  #dropzone.on { display: flex; }
+  #toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 30; background: var(--panel2); border: 1px solid var(--line); color: var(--ink); padding: 10px 16px; border-radius: 12px; display: none; }
+  #toast.on { display: block; }
+  /* Game view: the picked models by rarity, plus the finish variants each tier is made of */
+  .tier { margin: 0 0 28px; }
+  .tier h2 { display: flex; align-items: baseline; gap: 10px; font-size: 18px; margin: 0 0 4px; }
+  .tier h2 .n { color: var(--muted); font-weight: 500; font-size: 14px; }
+  .tier .how { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
+  .tier .grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+  .tier .card model-viewer { aspect-ratio: 1; }
+  .tier-common h2 .dot { background: #cfd8dc; } .tier-uncommon h2 .dot { background: var(--leaf); }
+  .tier-rare h2 .dot { background: var(--sun); } .tier-legendary h2 .dot { background: linear-gradient(135deg, #ff6b6b, #ffcc4d, #3da35d, #4ecdc4, #ff8fab); }
+  .tier-mythic h2 .dot { background: #b388ff; } .tier-secret h2 .dot { background: #333; border: 1px dashed var(--muted); }
+  .tier-unsorted h2 .dot { background: var(--coral); }
+  .dot { width: 12px; height: 12px; border-radius: 999px; display: inline-block; }
+  .card.variant model-viewer { background: radial-gradient(circle at 50% 40%, #3b3120, #24374a 75%); }
+  .card.holo model-viewer { background: radial-gradient(circle at 50% 40%, #3a2a4a, #24374a 75%); }
+  .finish { position: absolute; top: 8px; left: 8px; z-index: 2; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 999px; color: #3b2a1a; background: var(--sun); }
+  .finish.holo { background: linear-gradient(90deg, #ff6b6b, #ffcc4d, #3da35d, #4ecdc4, #ff8fab); color: #1a1420; }
+  .finish.plain { background: var(--panel2); color: var(--ink); border: 1px solid var(--line); }
+  .card.plain model-viewer { background: radial-gradient(circle at 50% 40%, #2c2a44, #24374a 75%); }
+  .variants { border-top: 1px solid var(--line); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .variants[hidden] { display: none; }
+  .vrow { display: grid; grid-template-columns: auto 92px 1fr; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
+  .vrow.on { color: var(--ink); }
+  .vrow input[type=text] { background: var(--panel2); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font-size: 13px; }
+  .vrow input[type=text]:disabled { opacity: .4; }
+  .vt { text-transform: capitalize; font-weight: 700; }
+  .vt-rare { color: var(--sun); } .vt-legendary { color: var(--pink); } .vt-mythic { color: #b388ff; } .vt-secret { color: var(--muted); }
+  .rarity { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); }
+  .rarity select { padding: 3px 6px; font-size: 12px; border-radius: 8px; }
+  .slot { border: 2px dashed var(--line); border-radius: 16px; min-height: 190px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 13px; text-align: center; padding: 16px; }
+  .chip.view.on { background: var(--aqua); border-color: var(--aqua); color: #0f2a28; }
+  @media (max-width: 760px) { .sheet { grid-template-columns: 1fr; } .sheet model-viewer { height: 55vh; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="row" style="justify-content: space-between">
+    <h1><span>Shaka Match</span> model library</h1>
+    <div class="meta" id="meta"></div>
+  </div>
+  <div class="row" style="margin-top: 10px">
+    <span class="chip view on" data-view="game">Game</span>
+    <span class="chip view" data-view="library">Library</span>
+    <input id="q" type="search" placeholder="Search name, slug, family, silhouette, colour…">
+    <span class="chip lib on" data-f="all">All</span>
+    <span class="chip lib" data-f="levels">In levels</span>
+    <span class="chip lib" data-f="unused">Not used</span>
+    <span class="chip lib pick" data-f="picks">★ Picks <b id="npicks">0</b></span>
+    <button class="btn ghost" id="sheet" title="CSV of every tier: what exists and what still needs a model">Download sheet</button>
+    <select id="sort">
+      <option value="name">Sort: name</option>
+      <option value="family">Sort: family</option>
+      <option value="silhouette">Sort: silhouette</option>
+      <option value="color">Sort: colour</option>
+      <option value="bytes">Sort: size</option>
+    </select>
+    <button class="btn ocean" id="share">Share picks</button>
+    <span id="local" class="meta" hidden>drop .glb files anywhere to add them (set the tier on the card; brand items are the <b>special</b> tier)</span>
+  </div>
+</header>
+<div id="dropzone">Drop to add to the library</div>
+<div id="toast"></div>
+<main>
+  <div id="tiers"></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>Nothing matches.</div>
+</main>
+
+<dialog id="dlg">
+  <div class="sheet">
+    <div class="viewerwrap">
+      <model-viewer id="big" camera-controls auto-rotate shadow-intensity="1" exposure="1.1" interaction-prompt="none"></model-viewer>
+      <div class="hint">drag to rotate · scroll to zoom · shift-drag to pan</div>
+    </div>
+    <div class="info">
+      <h2 id="d-name"></h2>
+      <div class="hawaiian" id="d-haw"></div>
+      <dl class="kv" id="d-kv"></dl>
+      <div class="pose" id="pose" hidden>
+        <div class="row">
+          <button class="btn mini ghost" data-cam="free">Free camera</button>
+          <button class="btn mini sun" data-cam="icon">Icon view</button>
+          <button class="btn mini sun" data-cam="shelf">Shelf view</button>
+          <button class="btn mini ghost" id="p-reset">Reset this view</button>
+        </div>
+        <div class="axes" id="p-axes"></div>
+        <div class="now" id="p-now"></div>
+        <div class="meta">Icon view is how thumbnails and goals show it; shelf view is how it lands after a tap. Drag or use the sliders. Drop a .glb on this window to swap the file. Nothing is written until you press Save.</div>
+        <div class="meta staged" id="p-file"></div>
+      </div>
+      <div class="variants" id="d-variants" hidden>
+        <div class="meta">Also drops in these tiers, as a variant of this model. Name is optional.</div>
+        <div id="d-vrows"></div>
+      </div>
+      <div class="actions" id="d-actions"></div>
+    </div>
+    <button class="close" id="close" aria-label="Close">×</button>
+  </div>
+</dialog>
+<dialog id="swap">
+  <div class="sheet small">
+    <div class="info">
+      <h2>Still in the game</h2>
+      <div class="meta" id="s-text"></div>
+      <select id="s-pick"></select>
+      <div class="meta" id="s-plan"></div>
+      <div class="row">
+        <button class="btn danger" id="s-go" style="margin-left: 0">Swap it out and delete</button>
+        <button class="btn ghost" id="s-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+<dialog id="unsaved">
+  <div class="sheet small">
+    <div class="info">
+      <h2>Unsaved changes</h2>
+      <div class="meta" id="u-list"></div>
+      <div class="row">
+        <button class="btn leaf" id="u-save">Save</button>
+        <button class="btn danger" id="u-discard" style="margin-left: 0">Discard</button>
+        <button class="btn ghost" id="u-keep">Keep editing</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const $ = s => document.querySelector(s);
+const state = { view: "game", q: "", f: "all", sort: "name", data: null, api: false, picks: new Set(JSON.parse(localStorage.getItem("picks") || "[]")) };
+
+// Rarity. A picked model is put in one base tier ("rarity" in the registry: common, uncommon, mythic, secret).
+// It can also drop in other tiers as a variant of itself ("variants": {tier: custom name or ""}): rare is drawn
+// gold and legendary holographic on the same GLB. Without a "variants" field the default rule applies: every
+// common and uncommon has a rare (gold) variant and every uncommon a legendary (holo) one.
+const BASE_TIERS = ["common", "uncommon", "mythic", "secret", "special"];
+const VARIANT_TIERS = ["rare", "legendary", "mythic", "secret"];
+const TIERS = [
+  { key: "unsorted", title: "Unsorted", how: "Picked for the game but not put in a tier yet. Pick one on each card." },
+  { key: "common", title: "Common", how: "The base set. What levels 1 to 10 are made of." },
+  { key: "uncommon", title: "Uncommon", how: "The step up. Shows from level 11 on." },
+  { key: "rare", title: "Rare", how: "Gold variants. By default every common and uncommon; open a model to change which tiers it drops in and what the variant is called." },
+  { key: "legendary", title: "Legendary", how: "Holographic variants. By default every uncommon." },
+  { key: "mythic", title: "Mythic", how: "Models set to mythic, plus mythic variants (no finish yet, drawn plain). Drop a .glb and set its rarity to mythic." },
+  { key: "secret", title: "Secret", how: "Models set to secret, plus secret variants (no finish yet, drawn plain)." },
+  { key: "special", title: "Special", how: "Brand items. Never in random packs; handed over during a brand's window and placed in the levels that feature them. No gold or holo versions. With dev mode on, the first special item is in level 1's pile and its pack." },
+];
+const TIER_FINISH = { rare: "gold", legendary: "holo" };   // how a variant in that tier is drawn
+const TIER_LABEL = { rare: "Gold", legendary: "Holo", mythic: "Mythic", secret: "Secret" };
+const FINISH = {
+  gold: { css: "variant" },
+  holo: { css: "variant holo" },
+  "": { css: "variant plain" },
+};
+function rarityOf(m) { return BASE_TIERS.includes(m.rarity) ? m.rarity : ""; }
+// {tier: custom name or ""} for every variant tier this model drops in.
+function variantsOf(m) {
+  if (m.variants && typeof m.variants === "object") {
+    const out = {};
+    for (const t of VARIANT_TIERS) if (t in m.variants) out[t] = String(m.variants[t] || "");
+    return out;
+  }
+  const r = rarityOf(m), out = {};
+  if (r === "common" || r === "uncommon") out.rare = "";
+  if (r === "uncommon") out.legendary = "";
+  return out;
+}
+function variantName(m, tier) { return variantsOf(m)[tier] || `${TIER_LABEL[tier]} ${m.name}`; }
+
+// A rainbow foil, generated once, used as the emissive map of holographic variants.
+let _foil = null;
+function foilUrl() {
+  if (_foil) return _foil;
+  const c = document.createElement("canvas"); c.width = c.height = 256;
+  const g = c.getContext("2d");
+  const lin = g.createLinearGradient(0, 0, 256, 256);
+  ["#ff5c7a", "#ffb84d", "#f3f76b", "#5cf77a", "#4de3ff", "#8a6bff", "#ff5c7a"].forEach((col, i, a) => lin.addColorStop(i / (a.length - 1), col));
+  g.fillStyle = lin; g.fillRect(0, 0, 256, 256);
+  const rad = g.createRadialGradient(128, 128, 20, 128, 128, 190);
+  rad.addColorStop(0, "rgba(255,255,255,.55)"); rad.addColorStop(1, "rgba(255,255,255,0)");
+  g.fillStyle = rad; g.fillRect(0, 0, 256, 256);
+  return _foil = c.toDataURL();
+}
+
+// Re-skin a loaded model-viewer: gold replaces the base colour with a metal; holo keeps the art and adds a
+// foil glow. Any other value puts the GLB's own materials back (model-viewer reloads on src change anyway).
+async function applyFinish(mv, finish) {
+  const model = mv.model;
+  if (!model || !finish) return;
+  const foil = finish === "holo" ? await mv.createTexture(foilUrl()) : null;
+  for (const mat of model.materials) {
+    const pbr = mat.pbrMetallicRoughness;
+    if (finish === "gold") {
+      pbr.baseColorTexture.setTexture(null);
+      pbr.setBaseColorFactor([0.98, 0.74, 0.3, 1]);
+      pbr.setMetallicFactor(0.9); pbr.setRoughnessFactor(0.38);
+    } else if (finish === "holo") {
+      mat.emissiveTexture.setTexture(foil);
+      mat.setEmissiveFactor([0.75, 0.75, 0.75]);
+      pbr.setMetallicFactor(0.85); pbr.setRoughnessFactor(0.22);
+    }
+  }
+}
+function watchFinishes(root) {
+  root.querySelectorAll("model-viewer[data-finish]").forEach(mv => {
+    const go = () => applyFinish(mv, mv.dataset.finish);
+    if (mv.loaded) go(); else mv.addEventListener("load", go, { once: true });
+  });
+}
+
+// The game's cameras, as model-viewer orbits. Icon: Thumbnail.gd looks from (1, 1.1, 2) at the origin.
+// Shelf: the game camera is nearly overhead, tilted ~22 deg towards the player over the shelf row.
+const CAMS = { icon: "26.6deg 63.3deg auto", shelf: "0deg 22deg auto" };
+const ICON_DEFAULT = [0, 25, 0];
+const DEG = Math.PI / 180;
+
+// Rotation as a 3x3 matrix so drags compose about world axes, like Node3D.global_rotate in the game.
+const pose = { m: null, R: ident(), cam: "free", dragging: false, last: null };
+function ident() { return [[1,0,0],[0,1,0],[0,0,1]]; }
+function mul(a, b) { return a.map((r, i) => [0,1,2].map(j => r[0]*b[0][j] + r[1]*b[1][j] + r[2]*b[2][j])); }
+function rotX(a) { const c = Math.cos(a), s = Math.sin(a); return [[1,0,0],[0,c,-s],[0,s,c]]; }
+function rotY(a) { const c = Math.cos(a), s = Math.sin(a); return [[c,0,s],[0,1,0],[-s,0,c]]; }
+function rotZ(a) { const c = Math.cos(a), s = Math.sin(a); return [[c,-s,0],[s,c,0],[0,0,1]]; }
+function rotAxis([x, y, z], a) {   // Rodrigues
+  const c = Math.cos(a), s = Math.sin(a), t = 1 - c;
+  return [[t*x*x + c, t*x*y - s*z, t*x*z + s*y], [t*x*y + s*z, t*y*y + c, t*y*z - s*x], [t*x*z - s*y, t*y*z + s*x, t*z*z + c]];
+}
+// The camera's right-hand axis for each game camera, so a vertical drag tips the model towards the viewer.
+const CAM_RIGHT = { icon: [Math.cos(26.6 * DEG), 0, -Math.sin(26.6 * DEG)], shelf: [1, 0, 0] };
+// Godot rotation_degrees (order YXZ: R = Ry * Rx * Rz) <-> matrix
+function fromEuler(d) { return mul(rotY(d[1]*DEG), mul(rotX(d[0]*DEG), rotZ(d[2]*DEG))); }
+function toEuler(R) {
+  const x = Math.asin(Math.max(-1, Math.min(1, -R[1][2])));
+  const y = Math.atan2(R[0][2], R[2][2]);
+  const z = Math.atan2(R[1][0], R[1][1]);
+  return [x, y, z].map(v => Math.round(v / DEG));
+}
+// model-viewer's orientation is "roll pitch yaw" = Z X Y, applied in that order: the same composition.
+function orientationOf(d) { return `${d[2]}deg ${d[0]}deg ${d[1]}deg`; }
+function rotOf(m, key) { return m[key] && m[key].length === 3 ? m[key] : (key === "icon_rot" ? ICON_DEFAULT : [0, 0, 0]); }
+
+// With the local API, ★ is the registry's "picked" flag: the set of models the game shows as collectibles.
+// On the public copy it is a private shortlist in localStorage, for reviewers.
+function isPicked(m) { return state.api ? !!m.picked : state.picks.has(m.slug); }
+function savePicks() { localStorage.setItem("picks", JSON.stringify([...state.picks])); $("#npicks").textContent = state.data.models.filter(isPicked).length; }
+function fmtBytes(b) { return b > 1e6 ? (b / 1e6).toFixed(1) + " MB" : Math.round(b / 1e3) + " KB"; }
+function esc(s) { return String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+function tagsHtml(m) {
+  return m.levels && m.levels.length ? `<span class="tag lvl">levels ${m.levels.join(", ")}</span>` : "";
+}
+
+function matches(m) {
+  const q = state.q.trim().toLowerCase();
+  if (q) {
+    const hay = [m.name, m.slug, m.color].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  switch (state.f) {
+    case "levels": return m.levels.length > 0;
+    case "unused": return m.levels.length === 0;
+    case "picks": return isPicked(m);
+    case "all": return true;
+    default: return (m.tags || []).includes(state.f);
+  }
+}
+
+// `vtier` set: the card is this model's variant in that tier (drawn in the tier's finish, named by the model's
+// custom name or "Gold X"). Unset: the base model.
+function cardHtml(m, vtier, small) {
+  const finish = vtier ? (TIER_FINISH[vtier] || "") : "";
+  const f = vtier ? FINISH[finish] : null;
+  return `
+    <div class="card ${isPicked(m) ? "picked" : ""} ${f ? f.css : ""}" data-slug="${esc(m.slug)}" ${vtier ? `data-vtier="${vtier}"` : ""}>
+      ${vtier ? `<span class="finish ${finish || "plain"}">${TIER_LABEL[vtier]}</span>` : `<button class="pickbtn ${isPicked(m) ? "on" : ""}" title="${state.api ? "In the game's collection" : "Pick"}">★</button>`}
+      <model-viewer src="${esc(m.web_file)}" ${m.preview && !finish ? `poster="${esc(m.preview)}"` : ""} ${finish ? `data-finish="${finish}"` : ""} loading="lazy" interaction-prompt="none" shadow-intensity="0.7" exposure="1.1" camera-orbit="${CAMS.icon}" field-of-view="30deg" orientation="${orientationOf(rotOf(m, "icon_rot"))}"></model-viewer>
+      <div class="body">
+        <div class="name">${esc(vtier ? variantName(m, vtier) : m.name)}</div>
+        ${small ? "" : `<div class="slug">${esc(m.slug)}</div>`}
+        ${vtier ? "" : rarityHtml(m)}
+        ${small ? "" : `<div class="tags">${tagsHtml(m)}</div>`}
+      </div>
+    </div>`;
+}
+
+// The tier picker on a base card (local server only; read-only text on the public copy).
+function rarityHtml(m) {
+  if (!isPicked(m)) return "";
+  const r = rarityOf(m);
+  if (!state.api) return r ? `<div class="rarity">${r}</div>` : "";
+  return `<div class="rarity">tier <select class="rsel" data-slug="${esc(m.slug)}">
+    <option value="" ${r ? "" : "selected"}>unsorted</option>
+    ${BASE_TIERS.map(t => `<option value="${t}" ${t === r ? "selected" : ""}>${t}</option>`).join("")}
+  </select></div>`;
+}
+
+// Every card of a tier as [model, variant tier or ""]: the models put in it, then the variants that drop in it.
+function tierCards(tier, picked) {
+  if (tier.key === "unsorted") return picked.filter(m => !rarityOf(m)).map(m => [m, ""]);
+  const base = picked.filter(m => rarityOf(m) === tier.key).map(m => [m, ""]);
+  const variants = VARIANT_TIERS.includes(tier.key) ? picked.filter(m => tier.key in variantsOf(m) && rarityOf(m) !== tier.key).map(m => [m, tier.key]) : [];
+  return base.concat(variants);
+}
+
+function renderGame() {
+  const q = state.q.trim().toLowerCase();
+  const picked = state.data.models.filter(isPicked).filter(m => !q || [m.name, m.slug].join(" ").toLowerCase().includes(q))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  const counts = {};
+  $("#tiers").innerHTML = TIERS.map(tier => {
+    const list = tierCards(tier, picked);
+    counts[tier.key] = list.length;
+    if (tier.key === "unsorted" && !list.length) return "";
+    const cards = list.length ? list.map(([m, vt]) => cardHtml(m, vt, true)).join("")
+      : `<div class="slot">No models yet</div>`;
+    return `<section class="tier tier-${tier.key}">
+      <h2><span class="dot"></span>${tier.title} <span class="n">${list.length}</span></h2>
+      <p class="how">${tier.how}</p>
+      <div class="grid">${cards}</div>
+    </section>`;
+  }).join("");
+  watchFinishes($("#tiers"));
+  $("#empty").hidden = picked.length > 0;
+  const total = TIERS.filter(t => t.key !== "unsorted").reduce((n, t) => n + counts[t.key], 0);
+  $("#meta").textContent = `${picked.length} models in the game · ${total} collectibles across ${TIERS.length - 1} tiers` +
+    (counts.unsorted ? ` · ${counts.unsorted} unsorted` : "") + ` · built ${state.data.generated}`;
+}
+
+function render() {
+  const game = state.view === "game";
+  document.querySelectorAll(".chip.lib, #sort, #share").forEach(el => el.hidden = game);
+  $("#sheet").hidden = !game;
+  $("#grid").hidden = game;
+  $("#tiers").hidden = !game;
+  if (game) { $("#grid").innerHTML = ""; renderGame(); return; }
+  $("#tiers").innerHTML = "";
+  const grid = $("#grid");
+  const list = state.data.models.filter(matches).sort((a, b) => {
+    const k = state.sort;
+    if (k === "bytes") return b.bytes - a.bytes;
+    return String(a[k] ?? "~").localeCompare(String(b[k] ?? "~")) || a.name.localeCompare(b.name);
+  });
+  grid.innerHTML = list.map(m => cardHtml(m, null, false)).join("");
+  $("#empty").hidden = list.length > 0;
+  $("#meta").textContent = `${list.length} of ${state.data.models.length} models · ${state.data.level_count} levels · built ${state.data.generated}`;
+}
+
+// Everything edited in the detail view is a draft until Save: name, both view angles, the star, a swapped file.
+const draft = { m: null, name: "", hawaiian: "", pronunciation: "", icon_rot: [0, 0, 0], tray_rot: [0, 0, 0], picked: false, rarity: "", variants: {}, file: null, url: null };
+const hawOf = m => (m.hawaiian || ""), sayOf = m => (m.pronunciation || "");
+const sameVariants = (a, b) => JSON.stringify(Object.fromEntries(Object.entries(a).sort())) === JSON.stringify(Object.fromEntries(Object.entries(b).sort()));
+const KEY = { icon: "icon_rot", shelf: "tray_rot" };
+
+function loadDraft(m) {
+  draft.m = m; draft.name = m.name; draft.hawaiian = hawOf(m); draft.pronunciation = sayOf(m); draft.picked = isPicked(m); draft.rarity = rarityOf(m); draft.variants = { ...variantsOf(m) }; draft.file = null;
+  draft.icon_rot = [...rotOf(m, "icon_rot")]; draft.tray_rot = [...rotOf(m, "tray_rot")];
+  if (draft.url) { URL.revokeObjectURL(draft.url); draft.url = null; }
+}
+
+function changes() {
+  const m = draft.m, c = [];
+  if (!m || !state.api) return c;
+  if (draft.name !== m.name) c.push(`name → ${draft.name}`);
+  if (draft.hawaiian !== hawOf(m)) c.push(`Hawaiian → ${draft.hawaiian || "(none)"}`);
+  if (draft.pronunciation !== sayOf(m)) c.push(`pronunciation → ${draft.pronunciation || "(none)"}`);
+  if (draft.icon_rot.join() !== rotOf(m, "icon_rot").join()) c.push(`icon view → ${draft.icon_rot.join(" ")}`);
+  if (draft.tray_rot.join() !== rotOf(m, "tray_rot").join()) c.push(`shelf view → ${draft.tray_rot.join(" ")}`);
+  if (draft.picked !== isPicked(m)) c.push(draft.picked ? "put in the game" : "taken out of the game");
+  if (draft.rarity !== rarityOf(m)) c.push(`tier → ${draft.rarity || "unsorted"}`);
+  if (!sameVariants(draft.variants, variantsOf(m))) c.push(`also drops in: ${Object.keys(draft.variants).map(t => draft.variants[t] ? `${t} as "${draft.variants[t]}"` : t).join(", ") || "no other tier"}`);
+  if (draft.file) c.push(`file → ${draft.file.name} (${fmtBytes(draft.file.size)})`);
+  return c;
+}
+
+// The variants editor for the model in the detail view: which other tiers it drops in and what each is called.
+function refreshVariants() {
+  const m = draft.m;
+  const box = $("#d-variants");
+  if (!state.api || !m || !draft.picked && !isPicked(m)) { box.hidden = true; return; }
+  box.hidden = false;
+  $("#d-vrows").innerHTML = VARIANT_TIERS.filter(t => t !== draft.rarity).map(t => {
+    const on = t in draft.variants;
+    return `<label class="vrow ${on ? "on" : ""}">
+      <input type="checkbox" data-vt="${t}" ${on ? "checked" : ""}>
+      <span class="vt vt-${t}">${t}</span>
+      <input type="text" data-vname="${t}" placeholder="${esc(`${TIER_LABEL[t]} ${draft.name || m.name}`)}" value="${esc(draft.variants[t] || "")}" ${on ? "" : "disabled"}>
+    </label>`;
+  }).join("");
+  $("#d-vrows").querySelectorAll("input[type=checkbox]").forEach(cb => cb.onchange = () => {
+    const t = cb.dataset.vt;
+    if (cb.checked) draft.variants[t] = draft.variants[t] || ""; else delete draft.variants[t];
+    refreshVariants(); refreshActions();
+  });
+  $("#d-vrows").querySelectorAll("input[type=text]").forEach(inp => inp.oninput = () => {
+    draft.variants[inp.dataset.vname] = inp.value.trim().replace(/\s+/g, " ");
+    refreshActions();
+  });
+}
+
+function refreshActions() {
+  if (!state.api) return;
+  const n = changes().length;
+  const save = $("#d-save");
+  if (save) { save.disabled = n === 0; save.textContent = n ? `Save ${n} change${n > 1 ? "s" : ""}` : "Saved"; }
+  const pick = $("#d-pick");
+  if (pick) { pick.textContent = draft.picked ? "★ In the game" : "☆ Put in the game"; pick.className = `btn ${draft.picked ? "ghost" : "leaf"}`; }
+  $("#p-file").textContent = draft.file ? `New file staged: ${draft.file.name}, ${fmtBytes(draft.file.size)}. Shown above; written on Save.` : "";
+}
+
+function tierLabel(m, vtier) {
+  const r = rarityOf(m);
+  if (vtier) {
+    const how = { gold: "gold finish", holo: "holographic finish", "": "variant (no finish yet)" }[TIER_FINISH[vtier] || ""];
+    return `${vtier[0].toUpperCase()}${vtier.slice(1)} · ${how} of ${r || "?"} ${m.name}`;
+  }
+  return r || (isPicked(m) ? "unsorted" : "");
+}
+
+function openDetail(m, cam, vtier) {
+  loadDraft(m);
+  const big = $("#big");
+  const finish = vtier ? (TIER_FINISH[vtier] || "") : "";
+  pose.finish = finish;
+  big.src = m.web_file;
+  big.alt = m.name;
+  if (finish && big.loaded && big.src.endsWith(m.web_file)) applyFinish(big, finish);
+  const h = $("#d-name");
+  h.textContent = vtier ? variantName(m, vtier) : m.name;
+  if (state.api && !vtier) {
+    h.contentEditable = "plaintext-only";
+    h.title = "Click to rename";
+    h.oninput = () => { draft.name = h.textContent.trim().replace(/\s+/g, " "); refreshActions(); };
+    h.onkeydown = e => { if (e.key === "Enter" || e.keyCode === 13) { e.preventDefault(); h.blur(); } };
+  } else {
+    h.removeAttribute("contenteditable"); h.oninput = h.onkeydown = null;
+  }
+  // Hawaiian name and how to say it: the game shows both on the pack reveal. Edited here, saved with Save.
+  const haw = $("#d-haw");
+  if (state.api && !vtier) {
+    haw.hidden = false;
+    haw.innerHTML = `<input id="d-hawaiian" placeholder="Hawaiian name, with ʻokina and kahakō (ā ē ī ō ū)" value="${esc(draft.hawaiian)}">
+      <input id="d-say" placeholder="how to say it, e.g. ah-LOH-hah" value="${esc(draft.pronunciation)}">`;
+    $("#d-hawaiian").oninput = e => { draft.hawaiian = e.target.value.trim().replace(/\s+/g, " "); refreshActions(); };
+    $("#d-say").oninput = e => { draft.pronunciation = e.target.value.trim().replace(/\s+/g, " "); refreshActions(); };
+  } else if (hawOf(m)) {
+    haw.hidden = false;
+    haw.innerHTML = `<div class="word">${esc(hawOf(m))}</div>${sayOf(m) ? `<div class="say">${esc(sayOf(m))}</div>` : ""}`;
+  } else {
+    haw.hidden = true;
+  }
+  const kv = [
+    ["Tier", esc(tierLabel(m, vtier))],
+    ["Colour", m.color], ["Size", fmtBytes(m.bytes)],
+    ["Levels", m.levels && m.levels.length ? m.levels.join(", ") : ""],
+    ["License", m.license_url ? `<a href="${esc(m.license_url)}" target="_blank" rel="noopener">${esc(m.license)}</a>` : esc(m.license)],
+  ].filter(([, v]) => v && v !== "?");
+  $("#d-kv").innerHTML = kv.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+  $("#d-variants").hidden = true;
+  if (vtier) {
+    $("#d-actions").innerHTML = `<button class="btn ghost" id="d-base">Open the base model</button>`;
+    $("#d-base").onclick = () => openDetail(m, "free");
+  } else if (state.api) {
+    $("#d-actions").innerHTML = `
+      <label class="rarity">tier <select id="d-rarity">
+        <option value="">unsorted</option>${BASE_TIERS.map(t => `<option value="${t}">${t}</option>`).join("")}
+      </select></label>
+      <button class="btn" id="d-pick"></button>
+      <button class="btn leaf" id="d-save"></button>
+      <button class="btn danger" id="d-delete">Delete</button>`;
+    $("#d-rarity").value = draft.rarity;
+    $("#d-rarity").onchange = e => { draft.rarity = e.target.value; refreshVariants(); refreshActions(); };
+    refreshVariants();
+    $("#d-pick").onclick = () => { draft.picked = !draft.picked; refreshVariants(); refreshActions(); };
+    $("#d-save").onclick = () => saveDraft();
+    $("#d-delete").onclick = () => deleteModel(m);
+  } else {
+    const picked = isPicked(m);
+    $("#d-actions").innerHTML = `<button class="btn ${picked ? "ghost" : "leaf"}" id="d-pick">${picked ? "★ Picked" : "☆ Pick"}</button>`;
+    $("#d-pick").onclick = async () => { await togglePick(m.slug); openDetail(m); };
+  }
+  location.hash = m.slug + (vtier ? "#" + vtier : "");
+  $("#pose").hidden = !state.api || !!vtier;
+  pose.m = m;
+  setCam(cam || (state.api && !vtier ? "icon" : "free"));
+  refreshActions();
+  if (!$("#dlg").open) $("#dlg").showModal();
+}
+
+function setCam(cam) {
+  const big = $("#big");
+  pose.cam = cam;
+  document.querySelectorAll("[data-cam]").forEach(b => b.classList.toggle("on", b.dataset.cam === cam));
+  if (cam === "free") {
+    big.setAttribute("camera-controls", ""); big.setAttribute("auto-rotate", "");
+    big.classList.remove("posing");
+    $(".hint").textContent = "drag to orbit · scroll to zoom · shift-drag to pan";
+    big.cameraOrbit = "0deg 75deg auto"; big.fieldOfView = "auto";
+    big.orientation = "0deg 0deg 0deg";
+    $("#p-now").textContent = `icon ${draft.icon_rot.join(" ")}   ·   shelf ${draft.tray_rot.join(" ")}`;
+    return;
+  }
+  big.removeAttribute("camera-controls"); big.removeAttribute("auto-rotate");
+  big.classList.add("posing");
+  $(".hint").textContent = cam === "icon" ? "game thumbnail camera · drag turns the model" : "game camera over the shelf · drag turns the model";
+  big.cameraOrbit = CAMS[cam]; big.fieldOfView = "30deg";
+  pose.R = fromEuler(draft[KEY[cam]]);
+  applyPose();
+}
+
+// One row per axis: slider, exact degrees, and nudges. Godot's rotation_degrees X / Y / Z.
+const AXES = [["x", "tip (X)"], ["y", "spin (Y)"], ["z", "roll (Z)"]];
+function buildAxes() {
+  $("#p-axes").innerHTML = AXES.map(([a, label], i) => `
+    <label for="ax-${a}">${label}</label>
+    <input type="range" id="ax-${a}" data-axis="${i}" min="-180" max="180" step="1" value="0">
+    <input type="number" id="axn-${a}" data-axis="${i}" min="-180" max="180" step="1" value="0">
+    <span class="nudge">${[-90, -15, 15, 90].map(n => `<button data-axis="${i}" data-nudge="${n}">${n > 0 ? "+" : ""}${n}</button>`).join("")}</span>`).join("");
+  const setAxis = (i, v) => { const d = toEuler(pose.R); d[i] = ((Math.round(v) + 180) % 360 + 360) % 360 - 180; pose.R = fromEuler(d); applyPose(); };
+  $("#p-axes").addEventListener("input", e => { if (e.target.dataset.axis !== undefined) setAxis(+e.target.dataset.axis, +e.target.value); });
+  $("#p-axes").addEventListener("click", e => {
+    const b = e.target.closest("button[data-nudge]"); if (!b) return;
+    setAxis(+b.dataset.axis, toEuler(pose.R)[+b.dataset.axis] + +b.dataset.nudge);
+  });
+}
+
+// The pose on screen is the draft for the active view.
+function applyPose() {
+  if (pose.cam === "free") return;
+  const d = toEuler(pose.R);
+  draft[KEY[pose.cam]] = d;
+  $("#big").orientation = orientationOf(d);
+  AXES.forEach(([a], i) => {
+    const r = $("#ax-" + a), n = $("#axn-" + a);
+    if (document.activeElement !== r) r.value = d[i];
+    if (document.activeElement !== n) n.value = d[i];
+  });
+  $("#p-now").textContent = `editing ${pose.cam} view   ·   icon ${draft.icon_rot.join(" ")}   ·   shelf ${draft.tray_rot.join(" ")}`;
+  refreshActions();
+}
+
+function resetView() {
+  if (pose.cam === "free") return;
+  draft[KEY[pose.cam]] = [...rotOf(draft.m, KEY[pose.cam])];
+  pose.R = fromEuler(draft[KEY[pose.cam]]);
+  applyPose();
+}
+
+function stageFile(file) {
+  if (draft.url) URL.revokeObjectURL(draft.url);
+  draft.file = file;
+  draft.url = URL.createObjectURL(file);
+  $("#big").src = draft.url;
+  refreshActions();
+  toast(`${file.name} staged. Press Save to write it.`);
+}
+
+async function saveDraft() {
+  const m = draft.m;
+  const body = { slug: m.slug };
+  if (draft.name !== m.name) body.name = draft.name;
+  if (draft.hawaiian !== hawOf(m)) body.hawaiian = draft.hawaiian;
+  if (draft.pronunciation !== sayOf(m)) body.pronunciation = draft.pronunciation;
+  if (draft.icon_rot.join() !== rotOf(m, "icon_rot").join()) body.icon_rot = draft.icon_rot;
+  if (draft.tray_rot.join() !== rotOf(m, "tray_rot").join()) body.tray_rot = draft.tray_rot;
+  if (draft.picked !== isPicked(m)) body.picked = draft.picked;
+  if (draft.rarity !== rarityOf(m)) body.rarity = draft.rarity;
+  if (!sameVariants(draft.variants, variantsOf(m))) body.variants = draft.variants;
+  if (Object.keys(body).length > 1) {
+    const res = await (await fetch("api/save", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })).json();
+    if (!res.ok) { toast("Save failed: " + res.error, 6000); return false; }
+  }
+  let bust = "";
+  if (draft.file) {
+    toast(`Writing ${draft.file.name}…`, 60000);
+    const res = await (await fetch(`api/replace?slug=${encodeURIComponent(m.slug)}`, { method: "POST", body: draft.file })).json();
+    if (!res.ok) { toast(`${draft.file.name}: ${res.error}`, 6000); return false; }
+    bust = "?v=" + Date.now();
+  }
+  state.data = await (await fetch("data/models.json", { cache: "no-store" })).json();
+  const fresh = state.data.models.find(x => x.slug === m.slug);
+  if (bust) fresh.web_file += bust;
+  savePicks();
+  render();
+  toast("Saved" + (bust ? ". Godot is re-importing the new file in the background." : "."), 3000);
+  if ($("#dlg").open) openDetail(fresh, pose.cam);
+  return true;
+}
+
+function requestClose() {
+  if (changes().length) {
+    $("#u-list").innerHTML = changes().map(c => "• " + esc(c)).join("<br>");
+    $("#unsaved").showModal();
+    return;
+  }
+  $("#dlg").close();
+}
+
+function toast(msg, ms = 2500) {
+  const t = $("#toast"); t.textContent = msg; t.classList.add("on");
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), ms);
+}
+
+async function post(url, body) {
+  const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  try { return await r.json(); } catch { return { ok: false, error: `${url}: the server answered ${r.status} without a result` }; }
+}
+
+const nameOf = slug => (state.data.models.find(x => x.slug === slug) || { name: slug }).name;
+function describeSwaps(swapped) {
+  const by = {};
+  for (const [lvl, slug] of Object.entries(swapped)) (by[slug] = by[slug] || []).push(lvl);
+  return Object.entries(by).map(([slug, lvls]) => `${nameOf(slug)} in level${lvls.length > 1 ? "s" : ""} ${lvls.join(", ")}`).join("; ");
+}
+
+// A model a level uses: the server said which levels and what could stand in. Returns the chosen
+// stand-in ("auto" or a slug), or null on cancel.
+function chooseStandIn(m, res) {
+  return new Promise(resolve => {
+    const dlg = $("#swap"), sel = $("#s-pick");
+    $("#s-text").textContent = `${m.name} is in level${res.used.length > 1 ? "s" : ""} ${res.used.join(", ")}. Which model takes its place there?`;
+    sel.innerHTML = `<option value="auto">Best fit per level</option>` + res.options.map(o => `<option value="${esc(o.slug)}">${esc(o.name)}</option>`).join("");
+    const plan = () => {
+      $("#s-plan").textContent = sel.value === "auto" ? describeSwaps(res.auto)
+        : `${nameOf(sel.value)} in every level listed (best fit in a level that already has it)`;
+    };
+    sel.onchange = plan; plan();
+    const done = v => { dlg.close(); resolve(v); };
+    $("#s-go").onclick = () => done(sel.value);
+    $("#s-cancel").onclick = () => done(null);
+    dlg.oncancel = e => { e.preventDefault(); done(null); };
+    dlg.showModal();
+  });
+}
+
+async function deleteModel(m) {
+  if (!confirm(`Delete ${m.name}?\n\nRemoves the GLB and its registry entry.`)) return;
+  let res = await post("api/delete", { slug: m.slug });
+  if (res.used) {
+    const replace = await chooseStandIn(m, res);
+    if (!replace) return;
+    res = await post("api/delete", { slug: m.slug, replace });
+  }
+  if (!res.ok) { toast(res.error, 8000); return; }
+  $("#dlg").close();
+  state.data = await (await fetch("data/models.json", { cache: "no-store" })).json();
+  savePicks();
+  render();
+  const swaps = res.swapped && Object.keys(res.swapped).length ? describeSwaps(res.swapped) : "";
+  toast(swaps ? `${m.name} deleted. Now ${swaps}.` : `${m.name} deleted`, swaps ? 9000 : 2500);
+}
+
+async function upload(files) {
+  const folder = "art";   // every new model lands in assets/models/art; the tier on the card is what matters
+  const isGlb = f => /\.glb$/i.test(f.name) || f.type === "model/gltf-binary";
+  for (const f of files) if (!isGlb(f)) toast(`${f.name}: not a .glb`);
+  const glbs = files.filter(isGlb);
+  const before = new Set(state.data.models.map(m => m.slug));
+  const added = [], failed = [];
+  for (const [i, f] of glbs.entries()) {
+    toast(`Adding ${i + 1} of ${glbs.length} to ${folder}: ${f.name}…`, 60000);
+    const r = await fetch(`api/upload?folder=${encodeURIComponent(folder)}&name=${encodeURIComponent(f.name)}`, { method: "POST", body: f });
+    let res; try { res = await r.json(); } catch { res = { error: `the server answered ${r.status} without a result` }; }
+    if (!res.ok) { failed.push(`${f.name}: ${res.error}`); continue; }
+    added.push(res.slug);
+  }
+  if (!added.length) { if (failed.length) toast(failed.join(" · "), 8000); return; }
+  state.data = await (await fetch("data/models.json", { cache: "no-store" })).json();
+  const models = added.map(slug => state.data.models.find(x => x.slug === slug)).filter(Boolean);
+  if (!models.every(matches)) {   // the filter or search would hide a new card: show everything
+    state.q = ""; $("#q").value = ""; state.f = "all";
+    document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c.dataset.f === "all"));
+  }
+  render();
+  savePicks();
+  const fresh = added.filter(s => !before.has(s)), replaced = added.filter(s => before.has(s));
+  added.forEach(slug => document.querySelector(`.card[data-slug="${CSS.escape(slug)}"]`)?.classList.add("fresh"));
+  document.querySelector(".card.fresh")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  const parts = [];
+  if (fresh.length) parts.push(`Added ${fresh.length}: ${fresh.map(nameOf).join(", ")}`);
+  if (replaced.length) parts.push(`Replaced ${replaced.length}: ${replaced.map(nameOf).join(", ")}`);
+  if (failed.length) parts.push(`Failed ${failed.length}: ${failed.join("; ")}`);
+  toast(`${parts.join(". ")}. Godot is re-importing in the background.`, 9000);
+  if (models.length === 1) openDetail(models[0]);
+}
+
+async function togglePick(slug) {
+  if (state.api) {
+    const m = state.data.models.find(x => x.slug === slug);
+    const r = await fetch("api/pick", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ slug, picked: !m.picked }) });
+    const res = await r.json();
+    if (!res.ok) { toast("Could not save: " + res.error); return; }
+    m.picked = !m.picked;
+    toast(`${m.name}: ${m.picked ? "in" : "out of"} the game's collection`);
+  } else if (state.picks.has(slug)) state.picks.delete(slug); else state.picks.add(slug);
+  savePicks();
+  render();
+}
+
+// The tier on one card, written straight away (no draft: the card is the only thing that changes).
+async function setRarity(slug, rarity) {
+  const m = state.data.models.find(x => x.slug === slug);
+  const res = await post("api/rarity", { slug, rarity });
+  if (!res.ok) { toast("Could not save: " + res.error, 6000); render(); return; }
+  m.rarity = rarity;
+  toast(`${m.name}: ${rarity || "unsorted"}`);
+  render();
+}
+
+// One row per collectible, every tier, plus a line per empty tier: the sheet of what exists and what
+// still needs a model.
+function downloadSheet() {
+  const picked = state.data.models.filter(isPicked).sort((a, b) => a.name.localeCompare(b.name));
+  const rows = [["tier", "name", "base model", "slug", "finish", "status"]];
+  for (const tier of TIERS) {
+    const list = tierCards(tier, picked);
+    if (!list.length) rows.push([tier.title, "", "", "", "", tier.key === "unsorted" ? "" : "needs models"]);
+    for (const [m, vt] of list) {
+      const finish = vt ? (TIER_FINISH[vt] || "") : "";
+      rows.push([tier.title, vt ? variantName(m, vt) : m.name, m.name, m.slug, finish,
+        vt ? (finish ? "finish applied in-engine" : "variant, no finish yet") : tier.key === "unsorted" ? "needs a tier" : "have model"]);
+    }
+  }
+  const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(",")).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+  a.download = "shaka-match-rarity.csv"; a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function share() {
+  const picks = state.data.models.filter(isPicked);
+  if (!picks.length) { alert("Pick some models first (★ on a card)."); return; }
+  const lines = picks.map(m => `- [ ] **${m.name}** (\`${m.slug}\`)${m.levels.length ? ` · already in levels ${m.levels.join(", ")}` : ""}`);
+  const body = `Shortlist from the model library:\n\n${lines.join("\n")}\n\nViewer: ${location.origin}${location.pathname}\n`;
+  const repo = state.data.repo;
+  if (repo) window.open(`${repo}/issues/new?title=${encodeURIComponent("Model shortlist")}&labels=models&body=${encodeURIComponent(body)}`, "_blank");
+  else navigator.clipboard.writeText(body).then(() => alert("Shortlist copied to clipboard."));
+}
+
+async function main() {
+  state.data = await (await fetch("data/models.json", { cache: "no-store" })).json();
+  try {
+    const ping = await (await fetch("api/ping")).json();
+    state.api = !!ping.ok;
+
+    $("#local").hidden = false;
+  } catch (e) { state.api = false; }
+  state.view = localStorage.getItem("view") === "library" ? "library" : "game";
+  document.querySelectorAll(".chip.view").forEach(c => c.classList.toggle("on", c.dataset.view === state.view));
+  savePicks();
+  render();
+  buildAxes();
+  // Pose: drag turns the model about the world's up and right axes, like the game's Pose mode.
+  const big = $("#big");
+  big.addEventListener("pointerdown", e => {
+    if (pose.cam === "free" || e.button !== 0) return;
+    e.preventDefault();
+    pose.dragging = true; pose.last = [e.clientX, e.clientY];
+  }, true);
+  // Move and release are watched on the window, so a drag that leaves the viewer still ends cleanly
+  // and no pointer capture is left behind to swallow the next click.
+  window.addEventListener("pointermove", e => {
+    if (!pose.dragging) return;
+    const dx = e.clientX - pose.last[0], dy = e.clientY - pose.last[1];
+    pose.last = [e.clientX, e.clientY];
+    pose.R = mul(rotAxis(CAM_RIGHT[pose.cam] || [1, 0, 0], dy * 0.01), mul(rotY(dx * 0.01), pose.R));
+    applyPose();
+  }, true);
+  const endDrag = () => { pose.dragging = false; };
+  window.addEventListener("pointerup", endDrag, true);
+  window.addEventListener("pointercancel", endDrag, true);
+  window.addEventListener("blur", endDrag);
+  // A pose set before the GLB finished loading is not always drawn: apply it again once it is in.
+  big.addEventListener("load", () => {
+    if (pose.finish) applyFinish(big, pose.finish);
+    if (pose.cam !== "free") { big.cameraOrbit = CAMS[pose.cam]; big.fieldOfView = "30deg"; applyPose(); big.jumpCameraToGoal(); }
+  });
+  document.querySelectorAll("[data-cam]").forEach(b => b.onclick = () => setCam(b.dataset.cam));
+  $("#p-reset").onclick = resetView;
+  $("#u-save").onclick = async () => { $("#unsaved").close(); if (await saveDraft()) $("#dlg").close(); };
+  $("#u-discard").onclick = () => { $("#unsaved").close(); loadDraft(draft.m); $("#dlg").close(); };
+  $("#u-keep").onclick = () => $("#unsaved").close();
+  // Drop GLBs anywhere on the page (local server only).
+  let dragDepth = 0;
+  const dropHint = on => { if ($("#dlg").open) $(".sheet").classList.toggle("drop", on); else $("#dropzone").classList.toggle("on", on); };
+  document.addEventListener("dragenter", e => { if (!state.api) return; e.preventDefault(); if (++dragDepth === 1) dropHint(true); });
+  document.addEventListener("dragleave", e => { if (!state.api) return; if (--dragDepth === 0) dropHint(false); });
+  document.addEventListener("dragover", e => { if (state.api) e.preventDefault(); });
+  document.addEventListener("drop", e => {
+    if (!state.api) return;
+    e.preventDefault(); dragDepth = 0; dropHint(false);
+    const files = [...e.dataTransfer.files];
+    if ($("#dlg").open && pose.m) {
+      const glb = files.find(f => /\.glb$/i.test(f.name) || f.type === "model/gltf-binary");
+      if (glb) stageFile(glb); else toast("Drop a .glb to replace this model");
+      return;
+    }
+    upload(files);
+  });
+  $("#q").placeholder = "Search name or colour…";
+  $("#q").addEventListener("input", e => { state.q = e.target.value; render(); });
+  $("#sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
+  document.querySelectorAll(".chip.lib").forEach(c => c.addEventListener("click", () => {
+    document.querySelectorAll(".chip.lib").forEach(x => x.classList.remove("on"));
+    c.classList.add("on"); state.f = c.dataset.f; render();
+  }));
+  document.querySelectorAll(".chip.view").forEach(c => c.addEventListener("click", () => {
+    document.querySelectorAll(".chip.view").forEach(x => x.classList.remove("on"));
+    c.classList.add("on"); state.view = c.dataset.view; localStorage.setItem("view", state.view); render();
+  }));
+  const onCards = e => {
+    if (e.target.closest(".rsel")) return;   // the tier picker handles itself
+    const card = e.target.closest(".card"); if (!card) return;
+    const m = state.data.models.find(x => x.slug === card.dataset.slug);
+    if (e.target.closest(".pickbtn")) { togglePick(m.slug); return; }
+    openDetail(m, null, card.dataset.vtier || "");
+  };
+  $("#grid").addEventListener("click", onCards);
+  $("#tiers").addEventListener("click", onCards);
+  document.querySelectorAll("#grid, #tiers").forEach(el => el.addEventListener("change", e => {
+    const sel = e.target.closest(".rsel"); if (sel) setRarity(sel.dataset.slug, sel.value);
+  }));
+  $("#share").onclick = share;
+  $("#sheet").onclick = downloadSheet;
+  $("#close").onclick = requestClose;
+  $("#dlg").addEventListener("cancel", e => { if (changes().length) { e.preventDefault(); requestClose(); } });   // Esc
+  $("#dlg").addEventListener("close", () => {
+    pose.dragging = false; $("#big").src = "";
+    if (draft.url) { URL.revokeObjectURL(draft.url); draft.url = null; }
+    draft.m = null; history.replaceState(null, "", location.pathname);
+  });
+  $("#dlg").addEventListener("click", e => { if (e.target === $("#dlg")) requestClose(); });
+  const [slug, vtier] = location.hash.slice(1).split("#");
+  if (slug) { const m = state.data.models.find(x => x.slug === slug); if (m) openDetail(m, null, VARIANT_TIERS.includes(vtier) ? vtier : ""); }
+}
+main();
+</script>
+</body>
+</html>

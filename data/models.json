@@ -1,0 +1,2940 @@
+{
+ "repo": "https://github.com/merchlabs/shaka-match-models",
+ "generated": "2026-09-25 5932704",
+ "level_count": 40,
+ "models": [
+  {
+   "id": "WoXpAJT0oD",
+   "uuid": "92502dd5-cd39-4f77-a25e-119e7a054791",
+   "name": "Cone",
+   "author": "J-Toastie",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/WoXpAJT0oD",
+   "slug": "cone",
+   "pronunciation": "KOH-neh",
+   "hawaiian": "Kone",
+   "file": "res://assets/models/cone.glb",
+   "bytes": 21244,
+   "web_file": "models/cone.glb",
+   "levels": [],
+   "preview": "models/cone.png"
+  },
+  {
+   "id": "fis2ugeLbn",
+   "uuid": "5600ffdc-21d2-4e62-93e2-1b255738e43d",
+   "name": "Mug",
+   "author": "Kenney",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/fis2ugeLbn",
+   "slug": "mug",
+   "pronunciation": "KEE-ah-hah",
+   "hawaiian": "K\u012b\u02bbaha",
+   "file": "res://assets/models/mug.glb",
+   "bytes": 15440,
+   "web_file": "models/mug.glb",
+   "levels": [],
+   "preview": "models/mug.png"
+  },
+  {
+   "id": "UQRRrsP3wj",
+   "uuid": "ff15312e-72cf-4e1f-ba4d-910fccd9dc22",
+   "name": "Donut",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/UQRRrsP3wj",
+   "slug": "donut",
+   "pronunciation": "doh-NAH-tee",
+   "hawaiian": "Donati",
+   "file": "res://assets/models/donut.glb",
+   "bytes": 59172,
+   "web_file": "models/donut.glb",
+   "levels": [],
+   "preview": "models/donut.png"
+  },
+  {
+   "id": "71P9WRRZ4F",
+   "uuid": "44c992bc-30c7-4a31-b01a-0d542562d3f1",
+   "name": "Rubber Duck",
+   "author": "J-Toastie",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/71P9WRRZ4F",
+   "slug": "duck",
+   "pronunciation": "kah-KAH",
+   "hawaiian": "Kak\u0101",
+   "file": "res://assets/models/duck.glb",
+   "bytes": 71852,
+   "web_file": "models/duck.glb",
+   "levels": [],
+   "preview": "models/duck.png"
+  },
+  {
+   "id": "o4Of5itnxB",
+   "uuid": "d4144726-3971-4a88-adb4-594deb9cf9f8",
+   "name": "Apple",
+   "author": "Kenney",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/o4Of5itnxB",
+   "slug": "apple",
+   "pronunciation": "AH-pah-lah",
+   "hawaiian": "\u02bb\u0100pala",
+   "file": "res://assets/models/apple.glb",
+   "bytes": 12776,
+   "web_file": "models/apple.glb",
+   "levels": [],
+   "preview": "models/apple.png"
+  },
+  {
+   "id": "dLS2cGjYw6C",
+   "uuid": "f1e18671-9b26-4d3f-97a8-e2f158559a67",
+   "name": "Dice",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/dLS2cGjYw6C",
+   "slug": "dice",
+   "pronunciation": "KAI-keh",
+   "hawaiian": "Kaike",
+   "file": "res://assets/models/dice.glb",
+   "bytes": 318052,
+   "web_file": "models/dice.glb",
+   "levels": [],
+   "preview": "models/dice.png"
+  },
+  {
+   "id": "uio7lWWJo3",
+   "uuid": "3f77ae8e-28e1-4c20-a49b-9efe10ab0e09",
+   "name": "Present",
+   "author": "J-Toastie",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/uio7lWWJo3",
+   "slug": "present",
+   "pronunciation": "mah-KAH-nah",
+   "hawaiian": "Makana",
+   "file": "res://assets/models/present.glb",
+   "bytes": 26548,
+   "web_file": "models/present.glb",
+   "levels": [],
+   "preview": "models/present.png"
+  },
+  {
+   "id": "txZDsDca1L",
+   "uuid": "7b2e3b72-8ffd-4920-9134-c1b60e5ffe91",
+   "name": "Cupcake",
+   "author": "Kenney",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/txZDsDca1L",
+   "slug": "cupcake",
+   "pronunciation": "KEH-keh LEE-ee-LEE-ee",
+   "hawaiian": "Keke li\u02bbili\u02bbi",
+   "file": "res://assets/models/cupcake.glb",
+   "bytes": 21232,
+   "web_file": "models/cupcake.glb",
+   "levels": [],
+   "preview": "models/cupcake.png"
+  },
+  {
+   "id": "oaDwxwtjij",
+   "uuid": "74979311-8a4a-4b1b-ba1e-b8b049cd11ea",
+   "name": "Ice Cream",
+   "author": "Kenney",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/oaDwxwtjij",
+   "slug": "icecream",
+   "pronunciation": "how-kah-LEE-mah",
+   "hawaiian": "Haukalima",
+   "file": "res://assets/models/icecream.glb",
+   "bytes": 7940,
+   "web_file": "models/icecream.glb",
+   "levels": [],
+   "preview": "models/icecream.png"
+  },
+  {
+   "id": "Tyau1aS2r0",
+   "uuid": "da14b872-e62f-42f7-bbc3-ef37031d5530",
+   "name": "Star",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/Tyau1aS2r0",
+   "slug": "star",
+   "pronunciation": "HOH-koo",
+   "hawaiian": "H\u014dk\u016b",
+   "file": "res://assets/models/star.glb",
+   "bytes": 6784,
+   "web_file": "models/star.glb",
+   "levels": [],
+   "preview": "models/star.png"
+  },
+  {
+   "id": "bvLvqnU1jX",
+   "uuid": "49202ae4-62ac-4035-9726-1834228e7d08",
+   "name": "Pumpkin",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/bvLvqnU1jX",
+   "slug": "pumpkin",
+   "pronunciation": "pah-lah-AH-ee",
+   "hawaiian": "Pala\u02bbai",
+   "file": "res://assets/models/pumpkin.glb",
+   "bytes": 37424,
+   "web_file": "models/pumpkin.glb",
+   "levels": [],
+   "preview": "models/pumpkin.png"
+  },
+  {
+   "id": "HsEJgRLQWX",
+   "uuid": "c9bfa77b-fc43-402a-aee4-f34b2581b0f6",
+   "name": "Cactus",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/HsEJgRLQWX",
+   "slug": "cactus",
+   "pronunciation": "PAH-nee-nee",
+   "hawaiian": "P\u0101nini",
+   "file": "res://assets/models/cactus.glb",
+   "bytes": 24160,
+   "web_file": "models/cactus.glb",
+   "levels": [],
+   "preview": "models/cactus.png"
+  },
+  {
+   "id": "6365MG_Pr_f",
+   "uuid": "7c2fa4e9-4287-4f5f-8399-181ace7af858",
+   "name": "Videogame Controller",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/6365MG_Pr_f",
+   "slug": "controller",
+   "pronunciation": "PAH-hoo PAH-ah-nee",
+   "hawaiian": "Pahu p\u0101\u02bbani",
+   "file": "res://assets/models/controller.glb",
+   "bytes": 30112,
+   "web_file": "models/controller.glb",
+   "levels": [],
+   "preview": "models/controller.png"
+  },
+  {
+   "id": "4mPkOKdzAk-",
+   "uuid": "9e443482-759e-4894-bd16-622ef3aa3c39",
+   "name": "Rocket ship",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/4mPkOKdzAk-",
+   "slug": "rocket",
+   "pronunciation": "MOH-koo AH-hee LEH-leh",
+   "hawaiian": "Moku ahi lele",
+   "file": "res://assets/models/rocket.glb",
+   "bytes": 200948,
+   "web_file": "models/rocket.glb",
+   "levels": [],
+   "preview": "models/rocket.png"
+  },
+  {
+   "id": "CI3WufjOIN",
+   "uuid": "4115a9a4-7ada-41b6-bf3b-69d095358255",
+   "name": "Hamburger",
+   "author": "CreativeTrio",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/CI3WufjOIN",
+   "slug": "burger",
+   "pronunciation": "hah-mah-BOO-kah",
+   "hawaiian": "Hamabuka",
+   "file": "res://assets/models/burger.glb",
+   "bytes": 39652,
+   "web_file": "models/burger.glb",
+   "levels": [],
+   "preview": "models/burger.png"
+  },
+  {
+   "id": "Pc8dM9Ja4V",
+   "uuid": "a441a76e-cc50-48a7-bc0a-430a5e242ef9",
+   "name": "Bottle",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/Pc8dM9Ja4V",
+   "slug": "bottle",
+   "pronunciation": "OH-moh-leh",
+   "hawaiian": "\u02bb\u014cmole",
+   "file": "res://assets/models/bottle.glb",
+   "bytes": 16328,
+   "web_file": "models/bottle.glb",
+   "levels": [],
+   "preview": "models/bottle.png"
+  },
+  {
+   "id": "dVLJ5CjB0h",
+   "uuid": "a061b874-2c4d-4f08-8c6f-eb24bd8dfcb5",
+   "name": "Red Car",
+   "author": "J-Toastie",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/dVLJ5CjB0h",
+   "slug": "redcar",
+   "pronunciation": "KAH-ah OO-lah-OO-lah",
+   "hawaiian": "Ka\u02bba \u02bbula\u02bbula",
+   "file": "res://assets/models/redcar.glb",
+   "bytes": 109504,
+   "web_file": "models/redcar.glb",
+   "levels": [],
+   "preview": "models/redcar.png"
+  },
+  {
+   "id": "Gzj704DXdr",
+   "uuid": "1847cc66-801a-42fd-9a87-47e86c7a5435",
+   "name": "Sports Car",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/Gzj704DXdr",
+   "slug": "sportscar",
+   "pronunciation": "KAH-ah",
+   "hawaiian": "Ka\u02bba",
+   "file": "res://assets/models/sportscar.glb",
+   "bytes": 252528,
+   "web_file": "models/sportscar.glb",
+   "levels": [],
+   "preview": "models/sportscar.png"
+  },
+  {
+   "id": "VFFBOLXqB2",
+   "uuid": "0f204361-3a94-42b1-8a19-55b08e685737",
+   "name": "Pineapple",
+   "author": "Kenney",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/VFFBOLXqB2",
+   "slug": "pp_pineapple",
+   "pronunciation": "HAH-lah kah-HEE-kee",
+   "hawaiian": "Hala kahiki",
+   "file": "res://assets/models/pineapple.glb",
+   "bytes": 15544,
+   "tags": [
+    "hawaii"
+   ],
+   "color": "yellow",
+   "web_file": "models/pp_pineapple.glb",
+   "levels": [],
+   "preview": "models/pp_pineapple.png"
+  },
+  {
+   "id": "ufT2tXnLFc",
+   "uuid": "8a68e0e3-27d4-4868-a617-8e72f8013763",
+   "name": "Coconut Half",
+   "author": "Kenney",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/ufT2tXnLFc",
+   "slug": "coconuthalf",
+   "pronunciation": "NEE-oo",
+   "hawaiian": "Niu",
+   "file": "res://assets/models/coconuthalf.glb",
+   "bytes": 9448,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/coconuthalf.glb",
+   "levels": [],
+   "preview": "models/coconuthalf.png"
+  },
+  {
+   "id": "fklSEvGm1Q8",
+   "uuid": "7c64cc2c-b9aa-4edd-bc32-9e95d66ca5e0",
+   "name": "Turtle",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/fklSEvGm1Q8",
+   "slug": "turtle",
+   "pronunciation": "HOH-noo",
+   "hawaiian": "Honu",
+   "file": "res://assets/models/turtle.glb",
+   "bytes": 101888,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/turtle.glb",
+   "levels": [],
+   "preview": "models/turtle.png"
+  },
+  {
+   "id": "5ovn4mnRejL",
+   "uuid": "8c6c9226-c174-4ae4-b766-65a7a418cfee",
+   "name": "Seashell",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/5ovn4mnRejL",
+   "slug": "seashell",
+   "pronunciation": "POO-poo",
+   "hawaiian": "P\u016bp\u016b",
+   "file": "res://assets/models/seashell.glb",
+   "bytes": 1824940,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/seashell.glb",
+   "levels": [],
+   "preview": "models/seashell.png"
+  },
+  {
+   "id": "2DgM36qZW2u",
+   "uuid": "1acf95b5-2e6b-4c9d-bd37-8384b88bdbea",
+   "name": "Crab",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/2DgM36qZW2u",
+   "slug": "crab",
+   "pronunciation": "PAH-pah-ee",
+   "hawaiian": "P\u0101pa\u02bbi",
+   "file": "res://assets/models/crab.glb",
+   "bytes": 45092,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/crab.glb",
+   "levels": [],
+   "preview": "models/crab.png"
+  },
+  {
+   "id": "lJIfjMl47l",
+   "uuid": "cc2eae35-27e2-4924-8b45-cf5e16c42a7e",
+   "name": "Watermelon",
+   "author": "Kenney",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/lJIfjMl47l",
+   "slug": "watermelon",
+   "pronunciation": "EE-poo HOW-leh",
+   "hawaiian": "Ipu haole",
+   "file": "res://assets/models/watermelon.glb",
+   "bytes": 100624,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/watermelon.glb",
+   "levels": [],
+   "preview": "models/watermelon.png"
+  },
+  {
+   "id": "4IwPTeOmq6c",
+   "uuid": "504cc9cd-cbdc-4724-ab60-5899846aff1d",
+   "name": "beach ball",
+   "author": "the_ normalgamer",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/4IwPTeOmq6c",
+   "slug": "beachball",
+   "pronunciation": "POH-poh kah-hah-KAI",
+   "hawaiian": "P\u014dp\u014d kahakai",
+   "file": "res://assets/models/beachball.glb",
+   "bytes": 19388,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/beachball.glb",
+   "levels": [],
+   "preview": "models/beachball.png"
+  },
+  {
+   "id": "6GOTNOrNxI9",
+   "uuid": "6dace84f-adc4-48cd-b6f4-95bfe42f6677",
+   "name": "Pi\u00f1a colada",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/6GOTNOrNxI9",
+   "slug": "pinacolada",
+   "pronunciation": "PEE-nah koh-LAH-dah",
+   "hawaiian": "Pina kolada",
+   "rarity": "common",
+   "picked": true,
+   "file": "res://assets/models/pinacolada.glb",
+   "bytes": 2197544,
+   "tags": [
+    "hawaii"
+   ],
+   "color": "?",
+   "web_file": "models/pinacolada.glb",
+   "levels": [],
+   "preview": "models/pinacolada.png"
+  },
+  {
+   "id": "u8dPcdMXta",
+   "uuid": "4de6cfd1-b3a0-4e84-b365-013bd11187aa",
+   "name": "Cocktail",
+   "author": "Kenney",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/u8dPcdMXta",
+   "slug": "cocktail",
+   "variants": {},
+   "pronunciation": "MEH-ah EE-noo",
+   "hawaiian": "Mea inu",
+   "rarity": "common",
+   "picked": true,
+   "file": "res://assets/models/cocktail.glb",
+   "bytes": 14788,
+   "tags": [
+    "hawaii"
+   ],
+   "color": "?",
+   "web_file": "models/cocktail.glb",
+   "levels": [],
+   "preview": "models/cocktail.png"
+  },
+  {
+   "id": "98mRturOg91",
+   "uuid": "ec38ab57-4a75-4bbe-851c-b32a598efa6d",
+   "name": "Tiki Head",
+   "author": "Tipatat Chennavasin",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/98mRturOg91",
+   "slug": "tiki",
+   "pronunciation": "KEE-ee",
+   "hawaiian": "Ki\u02bbi",
+   "file": "res://assets/models/tiki.glb",
+   "bytes": 122036,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/tiki.glb",
+   "levels": [],
+   "preview": "models/tiki.png"
+  },
+  {
+   "id": "BEcU9rjiAq",
+   "uuid": "6805b99c-5fd7-4aab-bf57-3bb645e1108a",
+   "name": "Fish",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/BEcU9rjiAq",
+   "slug": "fish",
+   "pronunciation": "EE-ah",
+   "hawaiian": "I\u02bba",
+   "rarity": "common",
+   "tray_rot": [
+    -21,
+    -80,
+    26
+   ],
+   "icon_rot": [
+    2,
+    -52,
+    12
+   ],
+   "picked": true,
+   "file": "res://assets/models/fish.glb",
+   "bytes": 81508,
+   "tags": [
+    "hawaii"
+   ],
+   "color": "?",
+   "web_file": "models/fish.glb",
+   "levels": [],
+   "preview": "models/fish.png"
+  },
+  {
+   "id": "83obI9bNun",
+   "uuid": "ab9720c1-bfc4-4afc-a4d5-349fc725f6ae",
+   "name": "Bucket",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/83obI9bNun",
+   "slug": "bucket",
+   "pronunciation": "PAH-keh-keh",
+   "hawaiian": "P\u0101keke",
+   "file": "res://assets/models/bucket.glb",
+   "bytes": 23036,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/bucket.glb",
+   "levels": [],
+   "preview": "models/bucket.png"
+  },
+  {
+   "id": "6aHvdiwamh",
+   "uuid": "854ae5b8-864a-4d84-9ca6-496d00617083",
+   "name": "Popsicle",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/6aHvdiwamh",
+   "slug": "popsicle",
+   "pronunciation": "HOW AH-ee",
+   "hawaiian": "Hau \u02bbai",
+   "file": "res://assets/models/popsicle.glb",
+   "bytes": 11076,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/popsicle.glb",
+   "levels": [],
+   "preview": "models/popsicle.png"
+  },
+  {
+   "id": "A6cKJYFsIb",
+   "uuid": "4c17decd-3087-4afe-9611-cfd92cca47cd",
+   "name": "Palm Tree",
+   "author": "Quaternius",
+   "license": "Public Domain (CC0)",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "url": "https://poly.pizza/m/A6cKJYFsIb",
+   "slug": "palm",
+   "pronunciation": "KOO-moo NEE-oo",
+   "hawaiian": "Kumu niu",
+   "rarity": "common",
+   "picked": true,
+   "file": "res://assets/models/palm.glb",
+   "bytes": 118032,
+   "tags": [
+    "hawaii"
+   ],
+   "color": "?",
+   "web_file": "models/palm.glb",
+   "levels": [],
+   "preview": "models/palm.png"
+  },
+  {
+   "id": "7n1vrlFN0GH",
+   "uuid": "6b9eb5e5-a2d9-41b8-b6b1-4db908eadd46",
+   "name": "Life preserver",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/7n1vrlFN0GH",
+   "slug": "lifering",
+   "pronunciation": "POH-eye OH-lah",
+   "hawaiian": "P\u014d\u02bbai ola",
+   "rarity": "common",
+   "picked": true,
+   "file": "res://assets/models/lifering.glb",
+   "bytes": 70460,
+   "tags": [
+    "hawaii"
+   ],
+   "color": "?",
+   "web_file": "models/lifering.glb",
+   "levels": [],
+   "preview": "models/lifering.png"
+  },
+  {
+   "id": "7WpjcGsldL6",
+   "uuid": "30100b53-2b13-47ea-83ed-34f23374bbde",
+   "name": "Snow Cone",
+   "author": "Jarlan Perez",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/7WpjcGsldL6",
+   "slug": "snowcone",
+   "pronunciation": "HOW",
+   "hawaiian": "Hau",
+   "file": "res://assets/models/snowcone.glb",
+   "bytes": 46520,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/snowcone.glb",
+   "levels": [],
+   "preview": "models/snowcone.png"
+  },
+  {
+   "id": "1mVWW4RFVHc",
+   "uuid": "722a7a51-c81d-4fe9-8aa4-1ede8ece78dc",
+   "name": "Shark",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/1mVWW4RFVHc",
+   "slug": "shark",
+   "pronunciation": "mah-NOH",
+   "hawaiian": "Man\u014d",
+   "rarity": "common",
+   "tray_rot": [
+    -9,
+    179,
+    -65
+   ],
+   "icon_rot": [
+    -22,
+    -3,
+    10
+   ],
+   "picked": true,
+   "file": "res://assets/models/shark.glb",
+   "bytes": 34748,
+   "tags": [
+    "hawaii"
+   ],
+   "color": "?",
+   "web_file": "models/shark.glb",
+   "levels": [],
+   "preview": "models/shark.png"
+  },
+  {
+   "id": "8675QcluLQX",
+   "uuid": "160dd3c7-80ba-4061-a9e8-ab5bc17fcf4b",
+   "name": "Clam",
+   "author": "Poly by Google",
+   "license": "Creative Commons Attribution",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/",
+   "url": "https://poly.pizza/m/8675QcluLQX",
+   "slug": "clam",
+   "pronunciation": "OH-leh-peh",
+   "hawaiian": "\u02bb\u014clepe",
+   "file": "res://assets/models/clam.glb",
+   "bytes": 36592,
+   "tags": [
+    "hawaii"
+   ],
+   "web_file": "models/clam.glb",
+   "levels": [],
+   "preview": "models/clam.png"
+  },
+  {
+   "slug": "musubi",
+   "pronunciation": "moo-SOO-bee",
+   "hawaiian": "Musubi",
+   "name": "Spam Musubi",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/musubi.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "musubi",
+   "silhouette": "block",
+   "color": "white",
+   "web_file": "models/musubi.glb",
+   "bytes": 23456,
+   "levels": [
+    1,
+    8,
+    24,
+    32,
+    36
+   ]
+  },
+  {
+   "slug": "honu",
+   "pronunciation": "HOH-noo",
+   "hawaiian": "Honu",
+   "name": "Honu",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/honu.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "honu",
+   "silhouette": "animal",
+   "color": "green",
+   "web_file": "models/honu.glb",
+   "bytes": 36316,
+   "levels": [
+    1,
+    17,
+    22,
+    28,
+    34
+   ]
+  },
+  {
+   "slug": "shaka",
+   "pronunciation": "SHAH-kah",
+   "hawaiian": "Shaka",
+   "name": "Shaka",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/shaka.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "shaka",
+   "silhouette": "hand",
+   "color": "yellow",
+   "web_file": "models/shaka.glb",
+   "bytes": 98324,
+   "levels": [
+    2,
+    10,
+    24,
+    30,
+    35
+   ]
+  },
+  {
+   "slug": "rooster",
+   "pronunciation": "MOH-ah KAH-neh",
+   "hawaiian": "Moa k\u0101ne",
+   "rarity": "common",
+   "picked": true,
+   "name": "Rooster",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/rooster.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "rooster",
+   "silhouette": "animal",
+   "color": "redbrown",
+   "web_file": "models/rooster.glb",
+   "bytes": 150172,
+   "levels": [
+    3,
+    13,
+    23,
+    25,
+    39
+   ]
+  },
+  {
+   "slug": "shave_ice",
+   "pronunciation": "HOW",
+   "hawaiian": "Hau",
+   "name": "Shave Ice",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/shave_ice.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "shave_ice",
+   "silhouette": "cone",
+   "color": "blue",
+   "web_file": "models/shave_ice.glb",
+   "bytes": 28784,
+   "levels": [
+    3,
+    13,
+    19,
+    26,
+    36
+   ]
+  },
+  {
+   "slug": "malasada_box",
+   "pronunciation": "PAH-hoo mah-lah-SAH-dah",
+   "hawaiian": "Pahu malasada",
+   "rarity": "uncommon",
+   "picked": true,
+   "name": "Box of Malasadas",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/malasada_box.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "malasada_box",
+   "silhouette": "block",
+   "color": "pink",
+   "web_file": "models/malasada_box.glb",
+   "bytes": 91244,
+   "levels": [
+    5,
+    15,
+    23,
+    27,
+    34
+   ]
+  },
+  {
+   "slug": "poke_bowl",
+   "pronunciation": "POH-keh",
+   "hawaiian": "Poke",
+   "name": "Poke Bowl",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/poke_bowl.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "poke_bowl",
+   "silhouette": "bowl",
+   "color": "navy",
+   "web_file": "models/poke_bowl.glb",
+   "bytes": 107752,
+   "levels": [
+    10,
+    18,
+    21,
+    31,
+    33,
+    39
+   ]
+  },
+  {
+   "slug": "coconut",
+   "pronunciation": "NEE-oo",
+   "hawaiian": "Niu",
+   "rarity": "common",
+   "picked": true,
+   "name": "Coconut",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/coconut.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "coconut",
+   "silhouette": "ball",
+   "color": "brown",
+   "web_file": "models/coconut.glb",
+   "bytes": 27620,
+   "levels": [
+    2,
+    9,
+    24,
+    32,
+    35
+   ]
+  },
+  {
+   "slug": "papaya",
+   "pronunciation": "MEE-kah-nah",
+   "hawaiian": "M\u012bkana",
+   "name": "Papaya Half",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/papaya.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "papaya",
+   "silhouette": "bowl",
+   "color": "orange",
+   "web_file": "models/papaya.glb",
+   "bytes": 181388,
+   "levels": [
+    6,
+    8,
+    19,
+    26,
+    32
+   ]
+  },
+  {
+   "slug": "plumeria",
+   "pronunciation": "MEH-lee-ah",
+   "hawaiian": "Melia",
+   "name": "Plumeria",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/plumeria.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "plumeria",
+   "silhouette": "flower",
+   "color": "white",
+   "web_file": "models/plumeria.glb",
+   "bytes": 51108,
+   "levels": [
+    5,
+    9,
+    19,
+    26,
+    35
+   ]
+  },
+  {
+   "slug": "hibiscus",
+   "pronunciation": "ah-loh-AH-loh",
+   "hawaiian": "Aloalo",
+   "name": "Hibiscus",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/hibiscus.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "hibiscus",
+   "silhouette": "flower",
+   "color": "red",
+   "web_file": "models/hibiscus.glb",
+   "bytes": 53664,
+   "levels": [
+    7,
+    17,
+    22,
+    28,
+    39
+   ]
+  },
+  {
+   "slug": "kalo",
+   "pronunciation": "LAU KAH-loh",
+   "hawaiian": "Lau kalo",
+   "name": "Kalo Leaf",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/kalo.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "kalo",
+   "silhouette": "leaf",
+   "color": "green",
+   "web_file": "models/kalo.glb",
+   "bytes": 44508,
+   "levels": [
+    7,
+    18,
+    23,
+    30,
+    37
+   ]
+  },
+  {
+   "slug": "monk_seal",
+   "tray_rot": [
+    0,
+    89,
+    24
+   ],
+   "variants": {},
+   "pronunciation": "EE-lee-oh-HOH-loh-ee-kah-oo-AH-oo-ah",
+   "hawaiian": "\u02bb\u012alioholoikauaua",
+   "rarity": "common",
+   "picked": true,
+   "icon_rot": [
+    -15,
+    40,
+    23
+   ],
+   "name": "Monk Seal",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/monk_seal.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "monk_seal",
+   "silhouette": "animal",
+   "color": "gray",
+   "web_file": "models/monk_seal.glb",
+   "bytes": 48396,
+   "levels": [
+    10,
+    14,
+    18,
+    30,
+    38
+   ]
+  },
+  {
+   "slug": "gecko",
+   "pronunciation": "MOH-oh",
+   "hawaiian": "Mo\u02bbo",
+   "rarity": "common",
+   "tray_rot": [
+    -47,
+    3,
+    -3
+   ],
+   "icon_rot": [
+    -4,
+    -3,
+    0
+   ],
+   "picked": true,
+   "name": "Gecko",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/gecko.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "gecko",
+   "silhouette": "animal",
+   "color": "green",
+   "web_file": "models/gecko.glb",
+   "bytes": 5069068,
+   "levels": [
+    4,
+    9,
+    19,
+    24,
+    36
+   ]
+  },
+  {
+   "slug": "yellow_tang",
+   "pronunciation": "LAU-ee-PAH-lah",
+   "hawaiian": "Lau\u02bb\u012bpala",
+   "name": "Yellow Tang",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/yellow_tang.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "yellow_tang",
+   "silhouette": "fish",
+   "color": "yellow",
+   "web_file": "models/yellow_tang.glb",
+   "bytes": 113864,
+   "levels": [
+    5,
+    18,
+    26,
+    28,
+    36
+   ]
+  },
+  {
+   "slug": "manta_ray",
+   "pronunciation": "HAH-hah-LOO-ah",
+   "hawaiian": "H\u0101h\u0101lua",
+   "rarity": "common",
+   "picked": true,
+   "name": "Manta Ray",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/manta_ray.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "manta_ray",
+   "silhouette": "fish",
+   "color": "navy",
+   "web_file": "models/manta_ray.glb",
+   "bytes": 93636,
+   "levels": [
+    7,
+    16,
+    19,
+    29,
+    37,
+    40
+   ]
+  },
+  {
+   "slug": "slippah",
+   "pronunciation": "KAH-mah-ah PAH-leh VAH-vai",
+   "hawaiian": "K\u0101ma\u02bba pale w\u0101wae",
+   "name": "Slippah",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/slippah.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "slippah",
+   "silhouette": "slab",
+   "color": "orange",
+   "web_file": "models/slippah.glb",
+   "bytes": 27628,
+   "levels": [
+    3,
+    9,
+    22,
+    30,
+    34
+   ]
+  },
+  {
+   "slug": "surfboard",
+   "pronunciation": "PAH-pah HEH-eh NAH-loo",
+   "hawaiian": "Papa he\u02bbe nalu",
+   "rarity": "common",
+   "picked": true,
+   "name": "Surfboard",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/surfboard.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "surfboard",
+   "silhouette": "slab",
+   "color": "cream",
+   "web_file": "models/surfboard.glb",
+   "bytes": 19284,
+   "levels": [
+    7,
+    16,
+    20,
+    27,
+    36
+   ]
+  },
+  {
+   "slug": "beach_ball",
+   "variants": {
+    "legendary": ""
+   },
+   "pronunciation": "POH-poh kah-hah-KAI",
+   "hawaiian": "P\u014dp\u014d kahakai",
+   "rarity": "common",
+   "picked": true,
+   "name": "Beach Ball",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/beach_ball.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "beach_ball",
+   "silhouette": "ball",
+   "color": "multi",
+   "web_file": "models/beach_ball.glb",
+   "bytes": 20968,
+   "levels": [
+    6,
+    15,
+    20,
+    25,
+    33
+   ]
+  },
+  {
+   "slug": "rice_cooker",
+   "pronunciation": "EE-poo LAI-kee",
+   "hawaiian": "Ipu laiki",
+   "picked": false,
+   "name": "Rice Cooker",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/rice_cooker.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "rice_cooker",
+   "silhouette": "pot",
+   "color": "white",
+   "web_file": "models/rice_cooker.glb",
+   "bytes": 40056,
+   "levels": [
+    4,
+    15,
+    25,
+    31,
+    33
+   ]
+  },
+  {
+   "slug": "shoyu",
+   "pronunciation": "SHOH-yoo",
+   "hawaiian": "Shoyu",
+   "name": "Shoyu Dispenser",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/shoyu.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "shoyu",
+   "silhouette": "bottle",
+   "color": "brown",
+   "web_file": "models/shoyu.glb",
+   "bytes": 31104,
+   "levels": [
+    5,
+    16,
+    19,
+    29,
+    37,
+    40
+   ]
+  },
+  {
+   "slug": "trucker_hat",
+   "pronunciation": "PAH-pah-leh",
+   "hawaiian": "P\u0101pale",
+   "name": "Trucker Hat",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/trucker_hat.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "trucker_hat",
+   "silhouette": "hat",
+   "color": "greenwhite",
+   "web_file": "models/trucker_hat.glb",
+   "bytes": 53736,
+   "levels": [
+    6,
+    8,
+    23,
+    31,
+    34,
+    40
+   ]
+  },
+  {
+   "slug": "pickup",
+   "pronunciation": "KAH-ah oo-KAH-nah",
+   "hawaiian": "Ka\u02bba ukana",
+   "name": "Lifted Pickup",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/pickup.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "pickup",
+   "silhouette": "vehicle",
+   "color": "red",
+   "web_file": "models/pickup.glb",
+   "bytes": 42344,
+   "levels": [
+    6,
+    8,
+    10,
+    30,
+    35
+   ]
+  },
+  {
+   "slug": "ukulele",
+   "pronunciation": "oo-koo-LEH-leh",
+   "hawaiian": "\u02bbUkulele",
+   "name": "\u02bbUkulele",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/ukulele.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "ukulele",
+   "silhouette": "instrument",
+   "color": "tan",
+   "web_file": "models/ukulele.glb",
+   "bytes": 56208,
+   "levels": [
+    7,
+    13,
+    21,
+    27,
+    38
+   ]
+  },
+  {
+   "slug": "lei",
+   "pronunciation": "LAY",
+   "hawaiian": "Lei",
+   "rarity": "common",
+   "tray_rot": [
+    13,
+    -15,
+    9
+   ],
+   "icon_rot": [
+    45,
+    11,
+    -5
+   ],
+   "picked": true,
+   "name": "Lei",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/lei.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "lei",
+   "silhouette": "ring",
+   "color": "multi",
+   "web_file": "models/lei.glb",
+   "bytes": 363456,
+   "levels": [
+    2,
+    4,
+    10,
+    29,
+    34
+   ]
+  },
+  {
+   "slug": "quilt_pillow",
+   "pronunciation": "oo-LOO-nah KAH-pah",
+   "hawaiian": "Uluna kapa",
+   "name": "Quilt Pillow",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/quilt_pillow.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "quilt_pillow",
+   "silhouette": "block",
+   "color": "cream",
+   "web_file": "models/quilt_pillow.glb",
+   "bytes": 321836,
+   "levels": [
+    10,
+    13,
+    22,
+    30,
+    39
+   ]
+  },
+  {
+   "slug": "rainbow",
+   "pronunciation": "AH-noo-eh-NOO-eh",
+   "hawaiian": "\u0100nuenue",
+   "tray_rot": [
+    19,
+    0,
+    0
+   ],
+   "rarity": "common",
+   "icon_rot": [
+    82,
+    34,
+    33
+   ],
+   "picked": true,
+   "name": "Rainbow",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/rainbow.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "rainbow",
+   "silhouette": "arc",
+   "color": "multi",
+   "web_file": "models/rainbow.glb",
+   "bytes": 409212,
+   "levels": [
+    7,
+    16,
+    24,
+    28,
+    35
+   ]
+  },
+  {
+   "slug": "wave",
+   "pronunciation": "NAH-loo",
+   "hawaiian": "Nalu",
+   "icon_rot": [
+    82,
+    43,
+    13
+   ],
+   "name": "Wave",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/wave.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "wave",
+   "silhouette": "curl",
+   "color": "blue",
+   "web_file": "models/wave.glb",
+   "bytes": 41420,
+   "levels": [
+    8,
+    15,
+    18,
+    27,
+    33
+   ]
+  },
+  {
+   "slug": "sunshine",
+   "pronunciation": "LAH",
+   "hawaiian": "L\u0101",
+   "name": "Sunshine",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/sunshine.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "sunshine",
+   "silhouette": "ball",
+   "color": "yellow",
+   "web_file": "models/sunshine.glb",
+   "bytes": 87916,
+   "levels": [
+    4,
+    17,
+    21,
+    31,
+    34
+   ]
+  },
+  {
+   "slug": "volcano",
+   "pronunciation": "LOO-ah PEH-leh",
+   "hawaiian": "Lua pele",
+   "rarity": "common",
+   "picked": true,
+   "name": "Volcano",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/volcano.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "volcano",
+   "silhouette": "cone",
+   "color": "gray",
+   "web_file": "models/volcano.glb",
+   "bytes": 19924,
+   "levels": [
+    5,
+    9,
+    22,
+    27,
+    40
+   ]
+  },
+  {
+   "slug": "pineapple",
+   "pronunciation": "HAH-lah kah-HEE-kee",
+   "hawaiian": "Hala kahiki",
+   "name": "Pineapple",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/pineapple.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "pineapple",
+   "silhouette": "cone",
+   "color": "yellow",
+   "web_file": "models/pineapple.glb",
+   "bytes": 265468,
+   "levels": [
+    1,
+    8,
+    25,
+    32,
+    39
+   ]
+  },
+  {
+   "slug": "ti_leaf_head_lei",
+   "pronunciation": "LAY POH-oh LAH-ee",
+   "hawaiian": "Lei po\u02bbo l\u0101\u02bb\u012b",
+   "rarity": "common",
+   "picked": true,
+   "name": "Ti Leaf Head Lei",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/characters.py",
+   "file": "res://assets/models/gen/ti_leaf_head_lei.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "ti_leaf_head_lei",
+   "silhouette": "ring",
+   "color": "green",
+   "web_file": "models/ti_leaf_head_lei.glb",
+   "bytes": 67500,
+   "levels": [
+    11,
+    15,
+    21,
+    26,
+    39
+   ]
+  },
+  {
+   "slug": "Meshy_AI_Emerald_Gift_0919193215_texture",
+   "pronunciation": "LOW-low",
+   "hawaiian": "Lau lau",
+   "rarity": "common",
+   "picked": true,
+   "name": "Lau Lau",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Emerald_Gift_0919193215_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Emerald_Gift_0919193215_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Emerald_Gift_0919193215_texture.glb",
+   "bytes": 5982700,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI_Emerald_Heart_Leaf_0919211338_texture",
+   "pronunciation": "LAU KAH-loh",
+   "hawaiian": "Lau kalo",
+   "rarity": "common",
+   "picked": true,
+   "name": "Kalo Leaf",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Emerald_Heart_Leaf_0919211338_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Emerald_Heart_Leaf_0919211338_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Emerald_Heart_Leaf_0919211338_texture.glb",
+   "bytes": 4222864,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI_Emerald_Sea_Turtle_0919193458_texture",
+   "pronunciation": "HOH-noo",
+   "hawaiian": "Honu",
+   "rarity": "common",
+   "tray_rot": [
+    -37,
+    0,
+    0
+   ],
+   "icon_rot": [
+    0,
+    1,
+    7
+   ],
+   "picked": true,
+   "name": "Honu",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Emerald_Sea_Turtle_0919193458_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Emerald_Sea_Turtle_0919193458_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Emerald_Sea_Turtle_0919193458_texture.glb",
+   "bytes": 5424840,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI_Geometric_Plumeria_0919193059_texture",
+   "tray_rot": [
+    22,
+    -8,
+    -2
+   ],
+   "icon_rot": [
+    47,
+    16,
+    -4
+   ],
+   "pronunciation": "MEH-lee-ah",
+   "hawaiian": "Melia",
+   "rarity": "common",
+   "picked": true,
+   "name": "Plumeria",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Geometric_Plumeria_0919193059_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Geometric_Plumeria_0919193059_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Geometric_Plumeria_0919193059_texture.glb",
+   "bytes": 4709640,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI_Low_Poly_Ramen_Bowl_0919193438_texture",
+   "pronunciation": "SAI-min",
+   "hawaiian": "Saimin",
+   "rarity": "uncommon",
+   "picked": true,
+   "name": "Saimin",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Low_Poly_Ramen_Bowl_0919193438_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Low_Poly_Ramen_Bowl_0919193438_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Low_Poly_Ramen_Bowl_0919193438_texture.glb",
+   "bytes": 6580328,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI_Papaya_Papercraft_Min_0919211846_texture",
+   "pronunciation": "MEE-kah-nah",
+   "hawaiian": "M\u012bkana",
+   "rarity": "common",
+   "picked": true,
+   "name": "Papaya",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Papaya_Papercraft_Min_0919211846_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Papaya_Papercraft_Min_0919211846_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Papaya_Papercraft_Min_0919211846_texture.glb",
+   "bytes": 5186188,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI_Sushi_Bowl_with_Chops_0919211327_texture",
+   "pronunciation": "POH-keh",
+   "hawaiian": "Poke",
+   "rarity": "common",
+   "picked": true,
+   "name": "Poke",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Sushi_Bowl_with_Chops_0919211327_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Sushi_Bowl_with_Chops_0919211327_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Sushi_Bowl_with_Chops_0919211327_texture.glb",
+   "bytes": 6138924,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI_Woodland_Bead_Wreath_0919210704_texture",
+   "pronunciation": "LAY koo-KOO-ee",
+   "hawaiian": "Lei kukui",
+   "rarity": "common",
+   "tray_rot": [
+    -69,
+    0,
+    0
+   ],
+   "picked": true,
+   "name": "Kukui Nut Lei",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Woodland_Bead_Wreath_0919210704_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Woodland_Bead_Wreath_0919210704_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Woodland_Bead_Wreath_0919210704_texture.glb",
+   "bytes": 5184504,
+   "levels": []
+  },
+  {
+   "slug": "ui_freeze",
+   "name": "Freeze icon",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/gen",
+   "file": "res://assets/models/gen/ui_freeze.glb",
+   "tags": [
+    "ui"
+   ],
+   "family": "icon",
+   "silhouette": "icon",
+   "color": "icon",
+   "web_file": "models/ui_freeze.glb",
+   "bytes": 61340,
+   "levels": []
+  },
+  {
+   "slug": "ui_net",
+   "name": "Net icon",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/gen",
+   "file": "res://assets/models/gen/ui_net.glb",
+   "tags": [
+    "ui"
+   ],
+   "family": "icon",
+   "silhouette": "icon",
+   "color": "icon",
+   "web_file": "models/ui_net.glb",
+   "bytes": 34152,
+   "levels": []
+  },
+  {
+   "slug": "ui_tidy",
+   "name": "Tidy icon",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/gen",
+   "file": "res://assets/models/gen/ui_tidy.glb",
+   "tags": [
+    "ui"
+   ],
+   "family": "icon",
+   "silhouette": "icon",
+   "color": "icon",
+   "web_file": "models/ui_tidy.glb",
+   "bytes": 12304,
+   "levels": []
+  },
+  {
+   "slug": "ui_undo",
+   "name": "Undo icon",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/gen",
+   "file": "res://assets/models/gen/ui_undo.glb",
+   "tags": [
+    "ui"
+   ],
+   "family": "icon",
+   "silhouette": "icon",
+   "color": "icon",
+   "web_file": "models/ui_undo.glb",
+   "bytes": 53860,
+   "levels": []
+  },
+  {
+   "slug": "art_aloha_shirt",
+   "pronunciation": "PAH-loo-leh ah-LOH-hah",
+   "hawaiian": "P\u0101lule aloha",
+   "name": "Aloha Shirt",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_aloha_shirt.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_aloha_shirt",
+   "silhouette": "block",
+   "color": "blue",
+   "web_file": "models/art_aloha_shirt.glb",
+   "bytes": 259576,
+   "levels": [
+    11,
+    16,
+    25,
+    28,
+    37,
+    40
+   ]
+  },
+  {
+   "slug": "art_hibiscus",
+   "pronunciation": "ah-loh-AH-loh",
+   "hawaiian": "Aloalo",
+   "rarity": "common",
+   "tray_rot": [
+    -56,
+    15,
+    -6
+   ],
+   "icon_rot": [
+    -3,
+    6,
+    0
+   ],
+   "picked": true,
+   "name": "Hibiscus",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_hibiscus.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_hibiscus",
+   "silhouette": "flower",
+   "color": "red",
+   "web_file": "models/art_hibiscus.glb",
+   "bytes": 270376,
+   "levels": [
+    11,
+    15,
+    24,
+    27,
+    33
+   ]
+  },
+  {
+   "slug": "art_lifted_truck",
+   "pronunciation": "KAH-ah oo-KAH-nah",
+   "hawaiian": "Ka\u02bba ukana",
+   "name": "Lifted Truck",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_lifted_truck.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_lifted_truck",
+   "silhouette": "vehicle",
+   "color": "red",
+   "web_file": "models/art_lifted_truck.glb",
+   "bytes": 262052,
+   "levels": [
+    12,
+    16,
+    25,
+    32,
+    37
+   ]
+  },
+  {
+   "slug": "art_pillow",
+   "pronunciation": "oo-LOO-nah KAH-pah",
+   "hawaiian": "Uluna kapa",
+   "name": "Quilt Pillow",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_pillow.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_pillow",
+   "silhouette": "block",
+   "color": "teal",
+   "web_file": "models/art_pillow.glb",
+   "bytes": 236740,
+   "levels": [
+    12,
+    14,
+    20,
+    29,
+    35
+   ]
+  },
+  {
+   "slug": "art_pineapple",
+   "pronunciation": "HAH-lah kah-HEE-kee",
+   "hawaiian": "Hala kahiki",
+   "name": "Pineapple",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_pineapple.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_pineapple",
+   "silhouette": "cone",
+   "color": "yellow",
+   "web_file": "models/art_pineapple.glb",
+   "bytes": 298428,
+   "levels": [
+    11,
+    14,
+    20,
+    29,
+    33
+   ]
+  },
+  {
+   "slug": "art_rice_cooker",
+   "pronunciation": "EE-poo LAI-kee",
+   "hawaiian": "Ipu laiki",
+   "name": "Rice Cooker",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_rice_cooker.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_rice_cooker",
+   "silhouette": "pot",
+   "color": "white",
+   "web_file": "models/art_rice_cooker.glb",
+   "bytes": 298628,
+   "levels": [
+    12,
+    14,
+    20,
+    27,
+    38
+   ]
+  },
+  {
+   "slug": "art_shaka",
+   "pronunciation": "SHAH-kah",
+   "hawaiian": "Shaka",
+   "name": "Shaka",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_shaka.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_shaka",
+   "silhouette": "hand",
+   "color": "tan",
+   "web_file": "models/art_shaka.glb",
+   "bytes": 227472,
+   "levels": [
+    12,
+    17,
+    23,
+    32,
+    34
+   ]
+  },
+  {
+   "slug": "art_shaka_gold",
+   "pronunciation": "SHAH-kah GOO-lah",
+   "hawaiian": "Shaka gula",
+   "name": "Gold Shaka",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_shaka_gold.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_shaka_gold",
+   "silhouette": "hand",
+   "color": "gold",
+   "web_file": "models/art_shaka_gold.glb",
+   "bytes": 202276,
+   "levels": [
+    11,
+    15,
+    22,
+    26,
+    37,
+    39
+   ]
+  },
+  {
+   "slug": "art_shave_ice",
+   "tray_rot": [
+    -30,
+    -3,
+    1
+   ],
+   "variants": {
+    "rare": ""
+   },
+   "rarity": "uncommon",
+   "picked": true,
+   "pronunciation": "HOW AH-noo-eh-NOO-eh",
+   "hawaiian": "Hau \u0101nuenue",
+   "name": "Rainbow Shave Ice",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_shave_ice.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_shave_ice",
+   "silhouette": "cone",
+   "color": "multi",
+   "web_file": "models/art_shave_ice.glb",
+   "bytes": 234284,
+   "levels": [
+    12,
+    17,
+    23,
+    30,
+    37
+   ]
+  },
+  {
+   "slug": "art_shoyu",
+   "pronunciation": "SHOH-yoo",
+   "hawaiian": "Shoyu",
+   "name": "Shoyu",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_shoyu.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_shoyu",
+   "silhouette": "bottle",
+   "color": "black",
+   "web_file": "models/art_shoyu.glb",
+   "bytes": 253592,
+   "levels": [
+    12,
+    18,
+    22,
+    25,
+    33
+   ]
+  },
+  {
+   "slug": "art_tiki_plastic",
+   "pronunciation": "KEE-ee",
+   "hawaiian": "Ki\u02bbi",
+   "name": "Tiki (plastic)",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_tiki_plastic.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_tiki_plastic",
+   "silhouette": "figure",
+   "color": "black",
+   "web_file": "models/art_tiki_plastic.glb",
+   "bytes": 171732,
+   "levels": [
+    11,
+    13,
+    19,
+    31,
+    36
+   ]
+  },
+  {
+   "slug": "art_tiki_wood",
+   "pronunciation": "KEE-ee LAH-ow",
+   "hawaiian": "Ki\u02bbi l\u0101\u02bbau",
+   "name": "Tiki (wood)",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/art",
+   "file": "res://assets/models/art/art_tiki_wood.glb",
+   "tags": [
+    "hawaii",
+    "art"
+   ],
+   "family": "art_tiki_wood",
+   "silhouette": "figure",
+   "color": "brown",
+   "web_file": "models/art_tiki_wood.glb",
+   "bytes": 254016,
+   "levels": [
+    12,
+    14,
+    21,
+    28,
+    38
+   ]
+  },
+  {
+   "slug": "alohashirt",
+   "pronunciation": "PAH-loo-leh ah-LOH-hah",
+   "hawaiian": "P\u0101lule aloha",
+   "rarity": "uncommon",
+   "picked": true,
+   "name": "Aloha Shirt",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/alohashirt.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "alohashirt",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/alohashirt.glb",
+   "bytes": 5402884,
+   "levels": [
+    6,
+    9,
+    17,
+    21,
+    31,
+    38
+   ]
+  },
+  {
+   "slug": "lifted-truck",
+   "pronunciation": "KAH-ah oo-KAH-nah",
+   "hawaiian": "Ka\u02bba ukana",
+   "rarity": "uncommon",
+   "tray_rot": [
+    0,
+    90,
+    -31
+   ],
+   "icon_rot": [
+    -11,
+    78,
+    -13
+   ],
+   "picked": true,
+   "name": "Lifted Yota",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/lifted-truck.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "lifted-truck",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/lifted-truck.glb",
+   "bytes": 10517568,
+   "levels": []
+  },
+  {
+   "slug": "pillow",
+   "pronunciation": "oo-LOO-nah KAH-pah",
+   "hawaiian": "Uluna kapa",
+   "rarity": "common",
+   "picked": true,
+   "name": "Quilted Pillow",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/pillow.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "pillow",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/pillow.glb",
+   "bytes": 6951104,
+   "levels": []
+  },
+  {
+   "slug": "rainbowshaveice",
+   "pronunciation": "HOW AH-noo-eh-NOO-eh",
+   "hawaiian": "Hau \u0101nuenue",
+   "rarity": "common",
+   "picked": true,
+   "name": "Shave Ice (Rainbow)",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/rainbowshaveice.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "rainbowshaveice",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/rainbowshaveice.glb",
+   "bytes": 4563616,
+   "levels": []
+  },
+  {
+   "slug": "ricecooker",
+   "pronunciation": "EE-poo LAI-kee",
+   "hawaiian": "Ipu laiki",
+   "variants": {
+    "rare": "",
+    "legendary": ""
+   },
+   "rarity": "uncommon",
+   "picked": true,
+   "name": "Rice Cooker",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/ricecooker.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "ricecooker",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/ricecooker.glb",
+   "bytes": 4288992,
+   "levels": []
+  },
+  {
+   "slug": "shaka_gold",
+   "pronunciation": "SHAH-kah GOO-lah",
+   "hawaiian": "Shaka gula",
+   "rarity": "",
+   "picked": false,
+   "name": "Shaka (Gold)",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/shaka_gold.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "shaka_gold",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/shaka_gold.glb",
+   "bytes": 4006692,
+   "levels": []
+  },
+  {
+   "slug": "shaka_regular",
+   "pronunciation": "SHAH-kah",
+   "hawaiian": "Shaka",
+   "rarity": "common",
+   "picked": true,
+   "name": "Shaka (Regular)",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/shaka_regular.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "shaka_regular",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/shaka_regular.glb",
+   "bytes": 3987688,
+   "levels": []
+  },
+  {
+   "slug": "tiki-plastic",
+   "variants": {
+    "rare": "Gold Tiki"
+   },
+   "pronunciation": "KEE-ee",
+   "hawaiian": "Ki\u02bbi",
+   "rarity": "common",
+   "picked": true,
+   "name": "Tiki (Plastic)",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/tiki-plastic.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "tiki-plastic",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/tiki-plastic.glb",
+   "bytes": 3284500,
+   "levels": []
+  },
+  {
+   "slug": "tiki-wood",
+   "variants": {
+    "legendary": ""
+   },
+   "pronunciation": "KEE-ee LAH-ow",
+   "hawaiian": "Ki\u02bbi l\u0101\u02bbau",
+   "rarity": "uncommon",
+   "picked": true,
+   "name": "Tiki (Wood)",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/tiki-wood.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "tiki-wood",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/tiki-wood.glb",
+   "bytes": 5417832,
+   "levels": []
+  },
+  {
+   "slug": "test_hibiscus",
+   "pronunciation": "ah-loh-AH-loh",
+   "hawaiian": "Aloalo",
+   "picked": false,
+   "name": "test hibiscus",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/test_hibiscus.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "test_hibiscus",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/test_hibiscus.glb",
+   "bytes": 6213236,
+   "levels": []
+  },
+  {
+   "slug": "test_pineapple",
+   "pronunciation": "HAH-lah kah-HEE-kee",
+   "hawaiian": "Hala kahiki",
+   "rarity": "common",
+   "tray_rot": [
+    -28,
+    0,
+    0
+   ],
+   "picked": true,
+   "name": "Pineapple",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/test_pineapple.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "test_pineapple",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/test_pineapple.glb",
+   "bytes": 18323172,
+   "levels": []
+  },
+  {
+   "slug": "test_shoyu",
+   "pronunciation": "SHOH-yoo",
+   "hawaiian": "Shoyu",
+   "rarity": "common",
+   "picked": true,
+   "name": "Shoyu",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/test_shoyu.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "test_shoyu",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/test_shoyu.glb",
+   "bytes": 10333332,
+   "levels": []
+  },
+  {
+   "slug": "hawaii_flag",
+   "variants": {
+    "legendary": ""
+   },
+   "pronunciation": "HAH-eh hah-VAI-ee",
+   "hawaiian": "Hae Hawai\u02bbi",
+   "rarity": "uncommon",
+   "picked": true,
+   "icon_rot": [
+    55,
+    20,
+    0
+   ],
+   "tray_rot": [
+    0,
+    0,
+    0
+   ],
+   "name": "Hawaii Flag",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/hawaii_flag.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "hawaii_flag",
+   "silhouette": "flag",
+   "color": "red",
+   "web_file": "models/hawaii_flag.glb",
+   "bytes": 42052,
+   "levels": [
+    14,
+    18,
+    21,
+    31,
+    38
+   ]
+  },
+  {
+   "slug": "kanaka_flag",
+   "variants": {
+    "legendary": ""
+   },
+   "pronunciation": "HAH-eh kah-NAH-kah MAH-oh-lee",
+   "hawaiian": "Hae Kanaka Maoli",
+   "rarity": "uncommon",
+   "picked": true,
+   "icon_rot": [
+    55,
+    20,
+    0
+   ],
+   "tray_rot": [
+    0,
+    0,
+    0
+   ],
+   "name": "Kanaka Maoli Flag",
+   "author": "MatchGame",
+   "license": "Project asset (generated)",
+   "url": "tools/gen/assets.py",
+   "file": "res://assets/models/gen/kanaka_flag.glb",
+   "tags": [
+    "hawaii",
+    "gen"
+   ],
+   "family": "kanaka_flag",
+   "silhouette": "flag",
+   "color": "green",
+   "web_file": "models/kanaka_flag.glb",
+   "bytes": 42824,
+   "levels": [
+    13,
+    16,
+    20,
+    29,
+    40
+   ]
+  },
+  {
+   "slug": "hook",
+   "pronunciation": "mah-KOW",
+   "hawaiian": "Makau",
+   "rarity": "uncommon",
+   "picked": true,
+   "name": "Fish Hook",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/hook.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "hook",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/hook.glb",
+   "bytes": 7872752,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI_Purple_Swirl_Bowl_0922181108_texture",
+   "pronunciation": "POY",
+   "hawaiian": "Poi",
+   "rarity": "common",
+   "tray_rot": [
+    21,
+    -1,
+    0
+   ],
+   "icon_rot": [
+    18,
+    17,
+    0
+   ],
+   "picked": true,
+   "name": "Poi",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI_Purple_Swirl_Bowl_0922181108_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI_Purple_Swirl_Bowl_0922181108_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI_Purple_Swirl_Bowl_0922181108_texture.glb",
+   "bytes": 4367492,
+   "levels": []
+  },
+  {
+   "slug": "Meshy_AI__0922181046_texture",
+   "pronunciation": "meh-neh-HOO-neh",
+   "hawaiian": "Menehune",
+   "rarity": "uncommon",
+   "tray_rot": [
+    7,
+    24,
+    1
+   ],
+   "icon_rot": [
+    -17,
+    24,
+    1
+   ],
+   "picked": true,
+   "name": "Menehune",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/Meshy_AI__0922181046_texture.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "Meshy_AI__0922181046_texture",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/Meshy_AI__0922181046_texture.glb",
+   "bytes": 4592080,
+   "levels": []
+  },
+  {
+   "slug": "warrior_helmet",
+   "pronunciation": "mah-hee-OH-leh",
+   "hawaiian": "Mahiole",
+   "rarity": "uncommon",
+   "tray_rot": [
+    -45,
+    0,
+    0
+   ],
+   "icon_rot": [
+    -19,
+    -16,
+    15
+   ],
+   "picked": true,
+   "name": "Warrior Helmet",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/warrior_helmet.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "warrior_helmet",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/warrior_helmet.glb",
+   "bytes": 14883728,
+   "levels": []
+  },
+  {
+   "slug": "birdofparadise",
+   "variants": {},
+   "pronunciation": "MAH-noo oh pah-rah-DAI-soh",
+   "hawaiian": "Manu o Paradaiso",
+   "rarity": "common",
+   "picked": true,
+   "name": "Bird of Paradise",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/birdofparadise.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "birdofparadise",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/birdofparadise.glb",
+   "bytes": 4888980,
+   "levels": []
+  },
+  {
+   "slug": "leaf",
+   "pronunciation": "LAU",
+   "hawaiian": "Lau",
+   "rarity": "common",
+   "picked": true,
+   "name": "Monstera Leaf",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/leaf.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "leaf",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/leaf.glb",
+   "bytes": 12427196,
+   "levels": []
+  },
+  {
+   "slug": "manapua",
+   "pronunciation": "mah-nah-POO-ah",
+   "hawaiian": "Manapua",
+   "rarity": "common",
+   "picked": true,
+   "name": "Manapua",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/manapua.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "manapua",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/manapua.glb",
+   "bytes": 4499124,
+   "levels": []
+  },
+  {
+   "slug": "test_slippah",
+   "pronunciation": "KAH-mah-ah PAH-leh VAH-vai",
+   "hawaiian": "K\u0101ma\u02bba pale w\u0101wae",
+   "rarity": "common",
+   "picked": true,
+   "name": "Slippah",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/test_slippah.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "test_slippah",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/test_slippah.glb",
+   "bytes": 3826696,
+   "levels": []
+  },
+  {
+   "slug": "nene",
+   "pronunciation": "NAY-nay",
+   "hawaiian": "N\u0113n\u0113",
+   "rarity": "common",
+   "tray_rot": [
+    -45,
+    -21,
+    15
+   ],
+   "icon_rot": [
+    -3,
+    -11,
+    11
+   ],
+   "picked": true,
+   "name": "Nene",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/nene.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "nene",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/nene.glb",
+   "bytes": 5893396,
+   "levels": []
+  },
+  {
+   "slug": "locomoco",
+   "pronunciation": "LOH-koh MOH-koh",
+   "hawaiian": "Loco moco",
+   "rarity": "common",
+   "picked": true,
+   "name": "Loco Moco",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/locomoco.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "locomoco",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/locomoco.glb",
+   "bytes": 5372860,
+   "levels": [
+    3,
+    13,
+    24,
+    28,
+    36,
+    40
+   ]
+  },
+  {
+   "slug": "beckoningcat",
+   "pronunciation": "POH-poh-kee",
+   "hawaiian": "P\u014dpoki",
+   "rarity": "uncommon",
+   "picked": true,
+   "name": "Beckoning Cat",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/beckoningcat.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "beckoningcat",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/beckoningcat.glb",
+   "bytes": 4305276,
+   "levels": []
+  },
+  {
+   "slug": "test_ukulele",
+   "pronunciation": "oo-koo-LEH-leh",
+   "hawaiian": "\u02bbUkulele",
+   "rarity": "uncommon",
+   "picked": true,
+   "name": "Ukulele",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/test",
+   "file": "res://assets/models/test/test_ukulele.glb",
+   "tags": [
+    "test"
+   ],
+   "family": "test_ukulele",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/test_ukulele.glb",
+   "bytes": 6493836,
+   "levels": []
+  },
+  {
+   "slug": "waikea",
+   "tray_rot": [
+    -16,
+    0,
+    0
+   ],
+   "pronunciation": "WHY",
+   "hawaiian": "Wai",
+   "icon_rot": [
+    7,
+    157,
+    -9
+   ],
+   "picked": true,
+   "name": "Waiakea Water",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/brand",
+   "file": "res://assets/models/brand/waikea.glb",
+   "tags": [
+    "hawaii",
+    "brand"
+   ],
+   "family": "waikea",
+   "silhouette": "?",
+   "color": "?",
+   "brand": "Waiakea Water",
+   "rarity": "special",
+   "web_file": "models/waikea.glb",
+   "bytes": 249896,
+   "levels": []
+  },
+  {
+   "slug": "brand_musubi",
+   "rarity": "uncommon",
+   "pronunciation": "moo-SOO-bee",
+   "hawaiian": "Musubi",
+   "picked": true,
+   "name": "Spam Musubi",
+   "author": "MatchGame",
+   "license": "Project asset",
+   "url": "assets/models/brand",
+   "file": "res://assets/models/brand/brand_musubi.glb",
+   "tags": [
+    "hawaii",
+    "brand"
+   ],
+   "family": "brand_musubi",
+   "silhouette": "?",
+   "color": "?",
+   "web_file": "models/brand_musubi.glb",
+   "bytes": 205968,
+   "levels": []
+  }
+ ]
+}

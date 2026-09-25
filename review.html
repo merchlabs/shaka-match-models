@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shaka Match: words to review</title>
+<meta name="description" content="Every collectible in Shaka Match with its English name, Hawaiian name and pronunciation. Edit the words here and send the edits back.">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>
+  :root {
+    --bg: #fff8e7; --card: #ffffff; --ink: #3b2a1a; --muted: #7a6a58; --line: #eadfc6;
+    --sun: #ffcc4d; --coral: #ff6b6b; --ocean: #1a9bd7; --leaf: #3da35d; --sky: #bfe9f7; --changed: #fff1c2;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.45 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  header { padding: 24px 16px 6px; max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+  h1 { margin: 0; font-size: 28px; flex: 1 1 auto; }
+  header input[type=search] { font: inherit; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); min-width: 220px; }
+  .count { font-size: 14px; color: var(--muted); }
+  main { max-width: 1100px; margin: 0 auto; padding: 8px 16px 120px; }
+  h2 { font-size: 20px; margin: 26px 0 10px; display: flex; align-items: center; gap: 10px; }
+  .tier-dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .card img, .card model-viewer { width: 100%; aspect-ratio: 1; border-radius: 12px; background: var(--sky); object-fit: contain; }
+  .name { font-weight: 700; font-size: 18px; margin-top: 4px; }
+  label.f { display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: var(--muted); }
+  label.f input { font: inherit; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+  label.f input.haw { font-size: 20px; font-weight: 700; }
+  label.f input:focus { outline: none; border-color: var(--ocean); box-shadow: 0 0 0 3px rgba(26,155,215,.18); }
+  label.f input.changed { background: var(--changed); border-color: var(--sun); }
+  .was { font-size: 12px; color: var(--muted); min-height: 1em; }
+  .card.hidden { display: none; }
+  .empty { color: var(--muted); padding: 30px 0; }
+  /* the sticky bar with the edits */
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid var(--line); box-shadow: 0 -6px 20px rgba(0,0,0,.08); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; }
+  .bar .n { font-weight: 700; }
+  .bar button { font: inherit; font-weight: 700; padding: 10px 16px; border-radius: 12px; border: 0; cursor: pointer; }
+  .bar .copy { background: var(--ocean); color: #fff; }
+  .bar button:disabled { opacity: .45; cursor: default; }
+  .toast { position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 12px; font-size: 14px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+  @media print { .bar, header input { display: none; } .card { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Shaka Match: words to review</h1>
+  <input id="q" type="search" placeholder="Search…" autocomplete="off">
+  <span class="count" id="count"></span>
+</header>
+<main id="main"><p class="empty">Loading…</p></main>
+<div class="bar">
+  <span><span class="n" id="n">0</span> <span id="n-word">edits</span></span>
+  <button class="copy" id="copy" disabled>Copy edits</button>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// Edits are made right on the cards and kept in this browser (localStorage)
+// until sent: "Copy edits" puts every edit on the clipboard as a small block
+// to paste into an email or a text.
+// tools/apply_review.py in the game repo takes that block and writes the
+// words into the registry, so they reach the game and this page.
+const TIERS = [
+  { key: "common", title: "Common", color: "#bfe9f7" },
+  { key: "uncommon", title: "Uncommon", color: "#3da35d" },
+  { key: "mythic", title: "Mythic", color: "#b388ff" },
+  { key: "secret", title: "Secret", color: "#3b2a1a" },
+  { key: "", title: "Not yet sorted into a tier", color: "#cccccc" },
+];
+const STORE = "shaka-match-word-edits";
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+let models = [], edits = {};
+try { edits = JSON.parse(localStorage.getItem(STORE) || "{}"); } catch (e) { edits = {}; }
+
+function card(m) {
+  const e = edits[m.slug] || {};
+  const pic = m.preview
+    ? `<img src="${esc(m.preview)}" alt="" loading="lazy">`
+    : `<model-viewer src="${esc(m.web_file)}" loading="lazy" interaction-prompt="none" camera-orbit="30deg 70deg auto" auto-rotate></model-viewer>`;
+  return `<div class="card" data-slug="${esc(m.slug)}" data-text="${esc(m.name.toLowerCase())}">
+    ${pic}
+    <div class="name">${esc(m.name)}</div>
+    <label class="f">Hawaiian name<input class="haw" data-field="hawaiian" lang="haw" value="${esc(e.hawaiian ?? m.hawaiian ?? "")}" placeholder="none yet" autocomplete="off" spellcheck="false"></label>
+    <label class="f">How to say it<input class="say" data-field="pronunciation" value="${esc(e.pronunciation ?? m.pronunciation ?? "")}" placeholder="none yet" autocomplete="off" spellcheck="false"></label>
+    <div class="was"></div>
+  </div>`;
+}
+
+function editList() {
+  const out = [];
+  for (const m of models) {
+    const e = edits[m.slug];
+    if (!e) continue;
+    const row = { slug: m.slug, name: m.name };
+    let any = false;
+    for (const f of ["hawaiian", "pronunciation"]) {
+      if (f in e && e[f] !== (m[f] || "")) { row[f] = e[f]; any = true; }
+    }
+    if (any) out.push(row);
+  }
+  return out;
+}
+
+function refreshCard(c, m) {
+  const e = edits[m.slug] || {};
+  let changed = [];
+  for (const inp of c.querySelectorAll("input[data-field]")) {
+    const f = inp.dataset.field, orig = m[f] || "";
+    const isChanged = f in e && e[f] !== orig;
+    inp.classList.toggle("changed", isChanged);
+    if (isChanged) changed.push(`was "${orig || "(none)"}"`);
+  }
+  c.querySelector(".was").textContent = changed.join(" · ");
+}
+
+function refreshBar() {
+  const list = editList();
+  document.getElementById("n").textContent = list.length;
+  document.getElementById("n-word").textContent = list.length === 1 ? "edit" : "edits";
+  document.getElementById("copy").disabled = list.length === 0;
+}
+
+function save() {
+  try { localStorage.setItem(STORE, JSON.stringify(edits)); } catch (e) {}
+  refreshBar();
+}
+
+function block() {
+  return "SHAKA-MATCH-WORD-EDITS\n" + JSON.stringify(editList(), null, 1) + "\nEND";
+}
+
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+async function load() {
+  const data = await fetch("data/models.json").then(r => r.json());
+  models = (data.models || data).filter(m => m.picked);
+  models.sort((a, b) => a.name.localeCompare(b.name));
+  const main = document.getElementById("main");
+  main.innerHTML = TIERS.map(t => {
+    const ms = models.filter(m => (m.rarity || "") === t.key || (t.key === "" && !TIERS.some(x => x.key && x.key === m.rarity)));
+    if (!ms.length) return "";
+    return `<section><h2><span class="tier-dot" style="background:${t.color}"></span>${t.title} <span class="count">${ms.length}</span></h2><div class="grid">${ms.map(card).join("")}</div></section>`;
+  }).join("");
+  const bySlug = Object.fromEntries(models.map(m => [m.slug, m]));
+  const cards = [...document.querySelectorAll(".card")];
+  for (const c of cards) {
+    const m = bySlug[c.dataset.slug];
+    refreshCard(c, m);
+    c.addEventListener("input", ev => {
+      const inp = ev.target;
+      if (!inp.dataset.field) return;
+      edits[m.slug] = edits[m.slug] || {};
+      edits[m.slug][inp.dataset.field] = inp.value.trim();
+      refreshCard(c, m);
+      save();
+    });
+  }
+  const q = document.getElementById("q"), count = document.getElementById("count");
+  function apply() {
+    const needle = q.value.trim().toLowerCase();
+    let shown = 0;
+    for (const c of cards) {
+      const ok = !needle || c.dataset.text.includes(needle) || c.querySelector(".haw").value.toLowerCase().includes(needle);
+      c.classList.toggle("hidden", !ok);
+      if (ok) shown++;
+    }
+    count.textContent = `${shown} of ${models.length} items`;
+  }
+  q.addEventListener("input", apply);
+  apply();
+  refreshBar();
+
+  document.getElementById("copy").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(block()); toast("Edits copied. Paste them into an email or a text to Jakob."); }
+    catch (e) { prompt("Copy this block:", block()); }
+  });
+}
+load().catch(e => { document.getElementById("main").innerHTML = `<p class="empty">Could not load the list: ${esc(e.message)}</p>`; });
+</script>
+</body>
+</html>
